@@ -1,0 +1,9 @@
+body {
+    background-image: url('http://w3schools.com/w3images/forestbridge.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+}
