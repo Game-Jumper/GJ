@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game Jumper</title>
+        <link rel="icon" href="../assets/favicon.ico">
+        <script type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="bgimg">
+            <div class="middle">
+                <h1>LOGIN TO SITE</h1>
+                <hr>
+                <form>
+                    <table width="20%" bgcolor="transparent" align="center">
+                        <tr>
+                            <td>Username</td>
+                            <td><input type="text" size=25 name="userid" class="input"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="password" size=25 name="pwd" class="input"></td>
+                        </tr>
+                        <tr>
+                            <td class="button"><input type="submit" onclick="check(this.form)" value="Login"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="bottomleft">
+                <p>
+                    <a href="../index.html" class="link">Back to Site</a>
+                </p>
+            </div>
+        </div>
+        <style>
+            #mc_embed_signup {
+                background: transparent;
+                clear:left;
+            }
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+            .bgimg {
+                background-image: url('http://w3schools.com/w3images/forestbridge.jpg');
+                height: 100%;
+                background-position: center;
+                background-size: cover;
+                position: relative;
+                color: white;
+                font-family: "Courier New", Courier, monospace;
+                font-size: 25px;
+            }
+            .topleft {
+                position: absolute;
+                top: 0;
+                left: 16px;
+            }
+
+            .bottomleft {
+                position: absolute;
+                bottom: 0;
+                left: 16px;
+            }
+
+            .middle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            hr {
+                margin: auto;
+                width: 40%;
+            }
+            .link {
+                text-decoration: none;
+                color: white;
+            }
+            .placeholder {
+                text-align: center;
+            }
+            .clear {
+                text-align: center;
+            }
+            .input {
+                border-radius: 3px;
+            }
+            .button {
+                text-align: center;
+            }
+        </style>
+        <script type="text/javascript">
+            function check(form) {
+                if(form.userid.value == "tester" && form.pwd.value == "Fzc6Q") {
+                    window.open("Login/tester.html");
+                }
+                else {
+                    alert("Invalid Login Credentials");
+                }
+            }
+        </script>
+    </body>
+</html>
