@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto|Roboto+Condensed|Source+Sans+Pro');
+        </style>
+        <title>Game Jumper Admin</title>
+        <link rel="shortcut icon" href="../assets/favicon.ico">
     </head>
-    <body onload="pageLoaded()">
+    <body onload="pageLoad()">
         <script>
+            var cookies = document.cookie;
+            function pageLoad() {
+                if(cookies == "Luke"){
+                    return true;
+                } else if(cookies == "Patrick") {
+                    return true;
+                } else if(cookies == "Chance") {
+                    return true;
+                } else {
+                    document.getElementById("main").innerHTML = "";
+                    window.location.replace("http://gamejumper.info");
+                }
+            }
         </script>
+        <div id="main">
+            <p id="hello-text">Hello, <script>document.write(cookies);</script>!</p>
+            <h1 class="center">Links/Accounts</h1>
+            <h3 class="center"><a href="https://mailchimp.com" class="link">MailChimp</a></h3>
+            <h3 class="center"><a href="https://paypal.com" class="link">PayPal</a></h3>
+            <h3 class="center"><a href="https://github.com/Game-Jumper" class="link">GitHub</a></h3>
+            <h5 class="center">Email for Username/Pass: lukestrong47@gmail.com</h5>
+            <br>
+            <hr id="hr">
+            <br>
+            <h1 class="center">Timeline</h1>
+            <br>
+            <hr>
+            <br>
+            <p class="text"><a href="feedback.html">Send Feedback</a>&nbsp;<span class="separator">|</span>&nbsp;<a href="../index.html" class="text">Back to Site</a></p>
+        </div>
+        <style>
+            .center {
+                text-align: center;
+                font-family: "Lato";
+            }
+            #hello-text {
+                font-family: "Roboto Condensed";
+            }
+            a {
+                font-family: "Source Sans Pro";
+                text-decoration: none;
+                color: black;
+            }
+            .text {
+                text-align: center;
+            }
+            #hr {
+                width: 30%;
+            }
+        </style>
     </body>
 </html>
