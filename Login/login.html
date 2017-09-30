@@ -3,7 +3,7 @@
     <head>
         <title>Game Jumper</title>
         <link rel="icon" href="../assets/favicon.ico">
-        <script type="text/javascript"></script>
+        <script type="text/javascript" src="login.js"></script>
     </head>
     <body>
         <div class="bgimg">
@@ -93,32 +93,26 @@
                 text-align: center;
             }
         </style>
-        <script type="text/javascript" href="login.js">
+        <script>
             function check(form) {
                 if(form.userid.value == "jkarch" && form.pwd.value == "Fzc6Q") {
+                    document.cookie = "Jason; path=tester.html";
                     window.open("tester.html");
-                    firstName = "Jason";
-                    lastName = "Karch";
                 } else if(form.userid.value == "jgoldman" && form.pwd.value == "Gz6fWK") {
                     window.open("tester.html");
-                    firstName = "Jake";
-                    lastName = "Goldman";
+                    document.cookie = "Noah; path=tester.html;";
                 } else if(form.userid.value == "nharrison" && form.pwd.value == "SAm82r") {
                     window.open("tester.html");
-                    firstName = "Noah";
-                    lastName = "Harrison";
+                    document.cookie = "Jake; path=tester.html;";
                 } else if(form.userid.value == "lstrong" && form.pwd.value == "tock8avg") {
                     window.open("admin.html");
-                    firstName = "Luke";
-                    lastName = "Strong";
+                    document.cookie = "Luke; path=admin.html;";
                 } else if(form.userid.value == "pdugan" && form.pwd.value == "L47VdW") {
                     window.open("admin.html");
-                    firstName = "Patrick";
-                    lastName = "Dugan";
+                    document.cookie = "Patrick; path=admin.html;";
                 } else if(form.userid.value == "cheinold" && form.pwd.value == "N5fQfC") {
                     window.open("admin.html");
-                    firstName = "Chance";
-                    lastName = "Heinold";
+                    document.cookie = "Chance; path=admin.html;";
                 } else {
                     alert("Invalid Login Credentials");
                 }

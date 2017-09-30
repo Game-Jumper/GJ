@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Game Jumper - Feedback</title>
+        <link rel="shortcut icon" href="../assets/favicon.ico">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto|Roboto+Condensed|Source+Sans+Pro');
+        </style>
+    </head>
+<body id="contact">
+    <div class="container">
+        <article class="main-contact">
+            <h1 style="font-family: 'Lato';">Send Feedback</h1>
+            <div id="form">
+                <form method="post" action="process.php">
+                    <p>
+                    <label for="name">Name:</label>
+                    </p>
+                    <p>
+                    </p>
+                    <p>
+                    <input type="text" name="name" placeholder="Name">
+                    </p>
+                    <p>
+                    <label for="email">Email:</label>
+                    <p>
+                    </p>
+                    <p>
+                    <input type="email" name="email" placeholder="Email" required>
+                    </p>
+                    <p>
+                    <label for="subject">Subject:</label>
+                    <p>
+                    </p>
+                    <p>
+                    <input type="text" name="subject" placeholder="Subject">
+                    </p>
+                    <p>
+                    <label for="message">Message:</label>
+                    </p>
+                    <textarea name="message" id="textmes" cols="30" rows="10" placeholder="Message" required></textarea>
+                    <br>
+                    <!--<button type="submit"><img src="../Assets/paper-airplane-icon.png" width="15px" height="15px"> <b>Submit</b></button>-->
+                    <input type="submit" name="submit" value="Submit" id="submit">
+                </form>
+            </div>
+        </article>
+    </div>
+    <footer><p>Back to Site</p></footer>
+    <style>
+        body {
+            background-color: #F4F4F4;
+            margin:0;
+        }
+        .container {
+            width: 780px;
+            margin: 0 auto;
+            border-radius: 4px;
+            }
+        footer p {
+            padding: 6px 40px 6px 40px;
+            background-color: #d6d6d6;
+            font-family: "Lucida Sans Unicode", "Proxima Nova";
+            color: #444444;
+            font-size: 11px;
+            text-transform: right;
+        }
+        form {
+            font-family: "Lato";
+        }
+    </style>
+</body>
+</html>

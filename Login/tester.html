@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head>
+    <body onload="pageLoad()">
+        <script>
+            var cookies = document.cookie;
+            function pageLoad() {
+                if(cookies == "Jason"){
+                    return true;
+                } else if(cookies == "Jake") {
+                    return true;
+                } else if(cookies == "Noah") {
+                    return true;
+                } else {
+                    document.getElementById("main").innerHTML = "";
+                    window.location.replace("http://gamejumper.info");
+                }
+            }
+        </script>
+        <div id="main">
+            <p>Hello, <script>document.write(cookies);</script>!</p>
+            <h1>Jobs Available</h1>
+            <p>No jobs available now. Check back here later.</p>
+            <footer><a href="feedback.html" style="background-color: #d6d6d6;">Send Feedback</a></footer>
+        </div>
+        <style>
+            
+        </style>
+    </body>
+</html>
