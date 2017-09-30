@@ -15,3 +15,5 @@
        alert("Invalid Login Credentials");
    }
 }*/
+var firstName = "";
+var lastName = "";
