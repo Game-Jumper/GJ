@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto|Roboto+Condensed|Source+Sans+Pro');
+        </style>
+        <title>Game Jumper Tester</title>
+        <link rel="shortcut icon" href="../assets/favicon.ico">
     </head>
     <body onload="pageLoad()">
         <script>
@@ -19,13 +24,30 @@
             }
         </script>
         <div id="main">
-            <p>Hello, <script>document.write(cookies);</script>!</p>
-            <h1>Jobs Available</h1>
-            <p>No jobs available now. Check back here later.</p>
-            <footer><a href="feedback.html" style="background-color: #d6d6d6;">Send Feedback</a></footer>
+            <p id="hello-text">Hello, <script>document.write(cookies);</script>!</p>
+            <h1 class="center">Jobs Available</h1>
+            <p class="center">No jobs available now. Check back here later.</p>
+            <br>
+            <hr>
+            <br>
+            <p class="text"><a href="feedback.html">Send Feedback</a>&nbsp;<span class="separator">|</span>&nbsp;<a href="../index.html" class="text">Back to Site</a></p>
         </div>
         <style>
-            
+            .center {
+                text-align: center;
+                font-family: "Lato";
+            }
+            #hello-text {
+                font-family: "Roboto Condensed";
+            }
+            a {
+                font-family: "Source Sans Pro";
+                text-decoration: none;
+                color: black;
+            }
+            .text {
+                text-align: center;
+            }
         </style>
     </body>
 </html>
