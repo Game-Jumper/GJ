@@ -19,11 +19,15 @@
                     var name = "P";
                 } else if(cookies == "Chance") {
                     return true;
+                    var name = "C";
                 } else {
                     document.getElementById("main").innerHTML = "";
                     window.location.replace("http://gamejumper.info");
                 }
             }
+            var patrickMessgaes = "Finish Up Game #1 & Contact Me When Done";
+            var chanceMessages = "None";
+            var lukeMessages = "Watch Jeopardy & Start Game #2";
         </script>
         <div id="main">
             <p id="hello-text">Hello, <script>document.write(cookies);</script>!</p>
@@ -71,7 +75,18 @@
             <br>
             <hr id="hr">
             <br>
-            <h1 class=""
+            <h1 class="center">Messages from Luke</h1>
+            <p class="center">
+                <script type="text/javascript">
+                    if(name == "L") {
+                        document.write(lukeMessages);
+                    } else if(name == "P") {
+                        document.write(patrickMessgaes);
+                    } else if(name == "C") {
+                        document.write(chanceMessages);
+                    }
+                </script>
+            </p>
             <br>
             <hr>
             <br>
