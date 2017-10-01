@@ -57,9 +57,10 @@
             <p class="center">Overall:<br>$63.75</p>
             <p class="center">Money You've Put In:<br>
                 <script type="text/javascript">
-                    if(name == "L") {
+                    var newCookies = document.cookie;
+                    if(newCookies == "Luke") {
                         document.write("$24");
-                    } else if(name == "P") {
+                    } else if(newCookie == "Patrick") {
                         document.write("$0");
                     } else {
                         document.write("$24");
@@ -78,11 +79,12 @@
             <h1 class="center">Messages from Luke</h1>
             <p class="center">
                 <script type="text/javascript">
-                    if(name == "L") {
+                    var secondCookies = document.cookie;
+                    if(secondCookies == "Luke") {
                         document.write(lukeMessages);
-                    } else if(name == "P") {
+                    } else if(secondCookies == "Patrick") {
                         document.write(patrickMessgaes);
-                    } else if(name == "C") {
+                    } else {
                         document.write(chanceMessages);
                     }
                 </script>
