@@ -10,9 +10,9 @@
     };
     firebase.initializeApp(config);
     //Get Elements
-    const txtEmail = document.getElementById('userName');
-    const txtPassword = document.getElementById('userPassword');
-    const btnLogin = document.getElementById('loginBtn');
+    const txtEmail = document.getElementById('txtEmail');
+    const txtPassword = document.getElementById('txtPassword');
+    const btnLogin = document.getElementById('btnLogin');
     //Add Login Event
     btnLogin.addEventListener('click', e => {
         //Get Email & Pass
@@ -27,18 +27,9 @@
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log(firebaseUser);
-            window.open("Login/tester.html")
+            window.location.replace("Login/tester.html")
         } else {
             console.log('Not Logged In');
         }
     });
-}());
-
-function pageLoad() {
-    if(firebaseUser) {
-        return true;
-    } else {
-        document.getElementById("main").innerHTML = "";
-        window.location.replace("http://gamejumper.info");
-    }
-}
+}()); 
