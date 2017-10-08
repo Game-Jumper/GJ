@@ -27,7 +27,7 @@
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log(firebaseUser);
-            window.location.replace("Login/tester.html")
+            window.location.replace("https://gamejumper.info/Login/tester.html")
         } else {
             console.log('Not Logged In');
         }
