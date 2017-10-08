@@ -8,19 +8,18 @@
         <title>Game Jumper Tester</title>
         <link rel="shortcut icon" href="../assets/favicon.ico">
     </head>
-    <body onload="pageLoad()">
+    <body>
         <script src="../testerlogin.js">
-            var config = {
-                apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
-                authDomain: "game-jumper-tester.firebaseapp.com",
-                databaseURL: "https://game-jumper-tester.firebaseio.com",
-                projectId: "game-jumper-tester",
-                storageBucket: "game-jumper-tester.appspot.com",
-                messagingSenderId: "457793690679"
-            };
-            firebase.initializeApp(config);
-            console.log(firebaseUser);
-            function pageLoad() {
+                var config = {
+                    apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
+                    authDomain: "game-jumper-tester.firebaseapp.com",
+                    databaseURL: "https://game-jumper-tester.firebaseio.com",
+                    projectId: "game-jumper-tester",
+                    storageBucket: "game-jumper-tester.appspot.com",
+                    messagingSenderId: "457793690679"
+                };
+                firebase.initializeApp(config);
+                console.log(firebaseUser);
                 if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
                     var usersName = "jake";
                     var userData = {
@@ -49,15 +48,13 @@
                         nextPayday: "TEST VERSION",
                         lukeMessages: "TEST VERSION"
                     };
-                    document.write("Hello");
                 } else {
                     document.getElementById('main').innerHTML = " ";
                     window.location.replace("https://gamejumper.info");
                 }
-            }
         </script>
         <div id="main">
-            <p id="hello-text">Hello, <script>document.write("Hi");</script>!</p>
+            <p id="hello-text">Hello, <script>document.write(userData.lukeMessages);</script>!</p>
             <h1 class="center">Jobs Available</h1>
             <p class="center">No jobs available now. Check back here later.</p>
             <br>
