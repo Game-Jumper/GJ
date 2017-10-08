@@ -8,7 +8,7 @@
         <title>Game Jumper Tester</title>
         <link rel="shortcut icon" href="../assets/favicon.ico">
     </head>
-    <body>
+    <body onload="pageLoad()">
         <script src="../testerlogin.js">
             var config = {
                 apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
@@ -20,38 +20,40 @@
             };
             firebase.initializeApp(config);
             console.log(firebaseUser);
-            if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
-                var usersName = "jake";
-                var userData = {
-                    currentMoney: "$0",
-                    nextPayday: "Jan 5th",
-                    lukeMessages: "None"
-                };
-            } else if(firebase.auth().currentUser.email == "Noah") {
-                var usersName = "noah";
-                var userData = {
-                    currentMoney: "$0",
-                    nextPayday: "Jan 5th",
-                    lukeMessages: "None"
-                };
-            } else if(firebase.auth().currentUser.email == "jkarch04@gmail.com") {
-                var usersName = "jason";
-                var userData = {
-                    currentMoney: "$0",
-                    nextPayday: "Jan 5th",
-                    lukeMessages: "None"
-                };
-            } else if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
-                var usersName = "luke";
-                var userData = {
-                    currentMoney: "TEST VERSION",
-                    nextPayday: "TEST VERSION",
-                    lukeMessages: "TEST VERSION"
-                };
-                document.write("Hello");
-            } else {
-                document.getElementById('main').innerHTML = " ";
-                window.location.replace("https://gamejumper.info");
+            function pageLoad() {
+                if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
+                    var usersName = "jake";
+                    var userData = {
+                        currentMoney: "$0",
+                        nextPayday: "Jan 5th",
+                        lukeMessages: "None"
+                    };
+                } else if(firebase.auth().currentUser.email == "Noah") {
+                    var usersName = "noah";
+                    var userData = {
+                        currentMoney: "$0",
+                        nextPayday: "Jan 5th",
+                        lukeMessages: "None"
+                    };
+                } else if(firebase.auth().currentUser.email == "jkarch04@gmail.com") {
+                    var usersName = "jason";
+                    var userData = {
+                        currentMoney: "$0",
+                        nextPayday: "Jan 5th",
+                        lukeMessages: "None"
+                    };
+                } else if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
+                    var usersName = "luke";
+                    var userData = {
+                        currentMoney: "TEST VERSION",
+                        nextPayday: "TEST VERSION",
+                        lukeMessages: "TEST VERSION"
+                    };
+                    document.write("Hello");
+                } else {
+                    document.getElementById('main').innerHTML = " ";
+                    window.location.replace("https://gamejumper.info");
+                }
             }
         </script>
         <div id="main">
