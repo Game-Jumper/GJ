@@ -9,38 +9,35 @@
         <link rel="shortcut icon" href="../assets/favicon.ico">
     </head>
     <body>
-        <script src="../testerlogin.js">
-            var config = {
-                apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
-                authDomain: "game-jumper-tester.firebaseapp.com",
-                databaseURL: "https://game-jumper-tester.firebaseio.com",
-                projectId: "game-jumper-tester",
-                storageBucket: "game-jumper-tester.appspot.com",
-                messagingSenderId: "457793690679"
-            };
-            firebase.initializeApp(config);
-            if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
+        <script src="../testing.js">
+            if(newPerson == "Luke") {
+                console.log("heyO");
+            }
+            console.log("Heyo");
+            var password = "pass";
+            if(person == "Luke") {
                 var usersName = "jake";
                 var userData = {
                     currentMoney: "$0",
                     nextPayday: "Jan 5th",
                     lukeMessages: "None"
                 };
-            } else if(firebase.auth().currentUser.email == "Noah") {
+                console.log("person signed in");
+            } else if(password == "password") {
                 var usersName = "noah";
                 var userData = {
                     currentMoney: "$0",
                     nextPayday: "Jan 5th",
                     lukeMessages: "None"
                 };
-            } else if(firebase.auth().currentUser.email == "jkarch04@gmail.com") {
+            } else if(password == "jkarch04@gmail.com") {
                 var usersName = "jason";
                 var userData = {
                     currentMoney: "$0",
                     nextPayday: "Jan 5th",
                     lukeMessages: "None"
                 };
-            } else if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
+            } else if(password == "lukestrong47@gmail.com") {
                 var usersName = "luke";
                 var userData = {
                     currentMoney: "TEST VERSION",
