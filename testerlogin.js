@@ -14,7 +14,7 @@
     const txtPassword = document.getElementById('txtPassword');
     const btnLogin = document.getElementById('btnLogin');
     //Add Login Event
-    btnLogin.addEventListener('click', e => {
+    /*btnLogin.addEventListener('click', e => {
         //Get Email & Pass
         const email = txtEmail.value;
         const pass = txtPassword.value;
@@ -22,7 +22,7 @@
         //Sign In
         const promise = auth.signInWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
-    });
+    });*/
     //Add RealTime Listener
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
@@ -32,4 +32,4 @@
             console.log('Not Logged In');
         }
     });
-}()); 
+}());
