@@ -30,17 +30,18 @@ function toggleSignIn() {
         // [START authwithemail]
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
-                var person = "Luke";
+                window.personName = "Luke";
                 window.open("Login/tester.html");
             } else if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
-                var person = "Jake";
+                window.personName = "Jake";
             } else if(firebase.auth().currentUser.email == "jasonkarch04@gmail.com") {
-                var person = "Jake";
-            } else if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
-                var person = "Jake";
+                window.personName = "Jason";
+            } else if(firebase.auth().currentUser.email == "gamejumpergj@gmail.com") {
+                window.personName = "Luke";
             } else {
                 console.log("person not 'signed in'");
-            } 
+            }
+            var usersName = personName;
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -169,7 +170,6 @@ function initApp() {
     document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
     document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
 }
-var newPerson = person;
 window.onload = function() {
     initApp();
 };
