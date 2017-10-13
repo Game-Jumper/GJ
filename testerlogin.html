@@ -4,20 +4,26 @@
         <title>Game Jumper</title>
         <link rel="icon" href="assets/favicon.ico">
         <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+        <script src="testerlogin.js"></script>
     </head>
     <body>
         <div class="login-page">
             <div class="form">
+                <!--<form class="register-form">
+                    <button>create</button>
+                    <p class="message">Already registered? <a href="#">Sign In</a></p>
+                </form>!-->
                 <!--<form class="login-form">!-->
-                    <input type="email" placeholder="email" id="txtEmail">
-                    <input type="password" placeholder="password" id="txtPassword">
-                <a id="btnLogin"><button>Login</button></a>
-                    <p class="message">Here By Accident? <a href="index.html">Back to Site</a></p>
+                    <input type="text" placeholder="email" id='email'/>
+                    <input type="password" placeholder="password" id='password'/>
+                    <button id="quickstart-sign-in">login</button>
+                    <p class="message">Not registered? <a href="#">Create an account</a></p>
                 <!--</form>!-->
             </div>
         </div>
         <style>
-            @import url(https://fonts.googleapis.com/css?family=Roboto:300|Mukta);
+            @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
             .login-page {
                 width: 360px;
                 padding: 8% 0 0;
@@ -117,6 +123,5 @@
                 -moz-osx-font-smoothing: grayscale;      
             }
         </style>
-        <script src="testerlogin.js"></script>
     </body>
 </html>

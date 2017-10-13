@@ -30,16 +30,16 @@ function toggleSignIn() {
         // [START authwithemail]
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
             if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
-                window.personName = "Luke";
+                var personName = "Luke";
                 window.open("Login/tester.html");
             } else if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
-                window.personName = "Jake";
+                var personName = "Jake";
             } else if(firebase.auth().currentUser.email == "jasonkarch04@gmail.com") {
-                window.personName = "Jason";
+                var personName = "Jason";
             } else if(firebase.auth().currentUser.email == "gamejumpergj@gmail.com") {
-                window.personName = "Luke";
+                var personName = "Luke";
             } else {
-                console.log("person not 'signed in'");
+                console.log("person not signed in");
             }
             var usersName = personName;
         }).catch(function(error) {
