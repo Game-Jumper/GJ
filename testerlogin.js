@@ -92,7 +92,7 @@ function toggleSignIn() {
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             //
-        } else if(firebase.auth().currentUser.email == "jasonkarch04@gmail.com") {
+        } else if(firebase.auth().currentUser.email == "jkarch04@gmail.com") {
             console.log("Jason");
             var usersName = "Jason";
             var userData = {
