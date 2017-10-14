@@ -2,51 +2,105 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Game Jumper - Feedback</title>
-        <link rel="shortcut icon" href="../assets/favicon.ico">
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto|Roboto+Condensed|Source+Sans+Pro');
-        </style>
-        <meta name="description" content="We are Game Jumper! Our Website is Currently Under Construction. Please Check Back Soon."/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Send Feedback</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="feedback.css">
+        <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
     </head>
-<body id="contact">
-    <div class="container">
-        <article class="main-contact">
-            <h1 style="font-family: 'Lato';">Send Feedback</h1>
-            <div id="form">
-                <p class="p">Send <strong>Site</strong> Feedback To:</p>
-                <p class="p">info@gamjumper.info</p>
+    <body>
+        <div class="container">
+            <h1 class="brand">Game Jumper</h1>
+            <div class="wrapper">
+                <div class="company-info">
+                    <h3>Game Jumper</h3>
+                    <ul>
+                        <li><i class="fa fa-road"></i> 115 Manhasset Trail</li>
+                        <li><i class="fa fa-phone"></i> (609) 744-2360</li>
+                        <li><i class="fa fa-envelope"></i> info@gamejumper.info</li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <h3>Email Us</h3>
+                    <div class="alert">Your message has been sent</div>
+                    <form id="contactForm">
+                        <p>
+                            <label>Name</label>
+                            <input type="text" name="name" id="name" required>
+                        </p>
+                        <p>
+                            <label>Email Address</label>
+                            <input type="email" name="email" id="email" required>
+                        </p>
+                        <p class="full">
+                            <label>Message</label>
+                            <textarea name="message" rows="5" id="message"></textarea>
+                        </p>
+                        <p class="full">
+                            <button type="submit">Submit</button>
+                        </p>
+                    </form>
+                </div>
             </div>
-        </article>
-    </div>
-    <footer><p><a href="tester.html">Back to Site</a></p></footer>
-    <style>
-        body {
-            background-color: #F4F4F4;
-            margin:0;
-        }
-        .container {
-            width: 780px;
-            margin: 0 auto;
-            border-radius: 4px;
+            <footer><p><a href="../index.html" id="label">Back to Site</a></p></footer>
+        </div>
+        <script>
+            var config = {
+                apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
+                authDomain: "game-jumper-tester.firebaseapp.com",
+                databaseURL: "https://game-jumper-tester.firebaseio.com",
+                projectId: "game-jumper-tester",
+                storageBucket: "game-jumper-tester.appspot.com",
+                messagingSenderId: "457793690679"
+            };
+            firebase.initializeApp(config);
+
+            // Reference messages collection
+            var messagesRef = firebase.database().ref('messages');
+
+            // Listen for form submit
+            document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+            // Submit form
+            function submitForm(e){
+                e.preventDefault();
+                // Get values
+                var name = getInputVal('name');
+                var email = getInputVal('email');
+                var message = getInputVal('message');
+                
+                console.log(name);
+
+                // Save message
+                saveMessage(name, email, message);
+
+                // Show alert
+                document.querySelector('.alert').style.display = 'block';
+
+                // Hide alert after 3 seconds
+                setTimeout(function(){
+                    document.querySelector('.alert').style.display = 'none';
+                },3000);
+
+                // Clear form
+                document.getElementById('contactForm').reset();
             }
-        footer p {
-            padding: 6px 40px 6px 40px;
-            background-color: #d6d6d6;
-            font-family: "Lucida Sans Unicode", "Proxima Nova";
-            color: #444444;
-            font-size: 11px;
-            text-transform: right;
-            position:fixed;
-            bottom:0px;
-        }
-        .p {
-            font-family: "Lato";
-        }
-        footer p a {
-            text-decoration: none;
-            color: #444444;
-        }
-    </style>
-</body>
+
+            // Function to get get form values
+            function getInputVal(id){
+                return document.getElementById(id).value;
+            }
+
+            // Save message to firebase
+            function saveMessage(name, email, message){
+                var newMessageRef = messagesRef.push();
+                newMessageRef.set({
+                    name: name,
+                    email:email,
+                    message:message
+                });
+            }
+        </script>
+    </body>
 </html>

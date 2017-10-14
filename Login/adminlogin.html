@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Game Jumper Tester</title>
+        <title>Game Jumper Admin</title>
         <link rel="icon" href="../assets/favicon.ico">
         <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
-        <script src="testerlogin.js"></script>
+        <script src="adminlogin.js"></script>
         <meta name="description" content="We are Game Jumper! Our Website is Currently Under Construction. Please Check Back Soon."/>
     </head>
     <body id="body">
@@ -14,33 +14,48 @@
                 <input type="text" placeholder="email" id='email'/>
                 <input type="password" placeholder="password" id='password'/>
                 <button id="quickstart-sign-in">login</button>
-                <p class="message">Want to be a tester? <a href="https://goo.gl/forms/1vIw5oyURJfMbHhY2">Sign Up</a></p>
             </div>
         </div>
-        <div id="testerSection" style="display: none;">
-            <div id="jobs"> 
-                <h1 class="center">Jobs Available</h1>
-                <p class="center">No jobs available now. Check back later.</p>
-            </div>
+        <div id="adminSection" style="display: none;">
+            <h1 class="center">Links/Accounts</h1>
+            <h3 class="center"><a href="https://mailchimp.com" class="link">MailChimp</a></h3>
+            <h3 class="center"><a href="https://paypal.com" class="link">PayPal</a></h3>
+            <h3 class="center"><a href="https://github.com/Game-Jumper" class="link">GitHub</a></h3>
+            <h3 class="center"><a href="https://twitter.com/GameJumperGJ" class="link">Twitter</a></h3>
+            <h3 class="center"><a href="https://facebook.com/GameJumper" class="link">Facebook</a></h3>
+            <h3 class="center"><a href="https://instagram.com/game.jumper" class="link">Instagram</a></h3>
+            <h5 class="center">For Usernames/Passcodes:<br>Contact Luke</h5>
             <br>
             <hr id="hr">
             <br>
-            <div id="money">
-                <h1 class="center">Money</h1>
-                <p class="center"><b>Your Money</b></p>
-                <p class="center" id="yourMoney">$0</p>
-                <p class="center"><b>Estimated Pay By Next Payday</b></p>
-                <p class="center" id="estimation">$3.75</p>
-                <p class="center"><b>Next Payday</b></p>
-                <p class="center" id="payDay">Jan 5th</p>
-            </div>
+            <h1 class="center">Timeline</h1>
+            <p class="center">Game #1 Due - October 20th (Luke)</p>
+            <p class="center">Game #2 Due - October 31st (Chance)</p>
+            <p class="center">Game #3 Due - November 5th (Luke)</p>
+            <p class="center">Site - December 22nd (Luke)</p>
+            <p class="center">Game #4 Due - December 28th (Luke)</p>
+            <p class="center">App #1 Due - January 30th (Luke)</p>
+            <p class="center">Game #5 Due - February 2nd (Chance)</p>
             <br>
             <hr id="hr">
             <br>
-            <div id="messages">
-                <h1 class="center">Messages From Luke</h1>
-                <p class="center" id="messagesFro">None</p>
-            </div>
+            <h1 class="center">Money</h1>
+            <p class="center"><b>Overall:</b></p>
+            <p class="center">$63.75</p>
+            <p class="center"><b>Money You've Put In:</b></p>
+            <p class="center" id="money"></p>
+            <br>
+            <hr id="hr">
+            <br>
+            <h1 class="center">Testers</h1>
+            <p class="center">Jason Karch - Lead Tester</p>
+            <p class="center">Jake Goldman - Tester</p>
+            <p class="center">Noah Harrison - Tester</p>
+            <br>
+            <hr id="hr">
+            <br>
+            <h1 class="center">Messages from Luke</h1>
+            <p class="center" id="messagesFro">Naw</p>
         </div>
         <br>
         <hr>
@@ -148,7 +163,7 @@
             }
             .center {
                 text-align: center;
-                font-family: 'Source Sans Pro';
+                font-family: "Lato";
             }
             #hr {
                 width: 20%;
@@ -160,6 +175,13 @@
             }
             #footer {
                 text-align: center;
+            }
+            #hello-text {
+                font-family: "Roboto";
+            }
+            .link {
+                color: black;
+                text-decoration: none;
             }
         </style>
     </body>
