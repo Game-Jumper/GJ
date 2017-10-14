@@ -121,7 +121,7 @@ function toggleSignIn() {
                 currentMoney: "TEST VERSION",
                 nextPayday: "TEST VERSION",
                 lukeMessages: "TEST VERSION",
-                estimatedMoney: "$3.75"
+                estimatedMoney: "TEST VERSION"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
