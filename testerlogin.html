@@ -6,8 +6,9 @@
         <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
         <script src="testerlogin.js"></script>
     </head>
-    <body>
-        <div class="login-page">
+    <body id="body">
+        <p id="hello-text">Hello, Jacob.</p>
+        <div class="login-page" id="login-page">
             <div class="form">
                 <!--<form class="register-form">
                     <button>create</button>
@@ -21,9 +22,37 @@
                 <!--</form>!-->
             </div>
         </div>
+        <div id="testerSection">
+            <div id="jobs"> 
+                <h1 class="center">Jobs Available</h1>
+                <p class="center">No jobs available now. Check back later.</p>
+            </div>
+            <br>
+            <hr id="hr">
+            <br>
+            <div id="money">
+                <h1 class="center">Money</h1>
+                <p class="center"><b>Your Money</b></p>
+                <p class="center" id="yourMoney">$0</p>
+                <p class="center"><b>Estimated Pay By Next Payday</b></p>
+                <p class="center" id="estimation">$3.75</p>
+                <p class="center"><b>Next Payday</b></p>
+                <p class="center" id="payDay">Jan 5th</p>
+            </div>
+            <br>
+            <hr id="hr">
+            <br>
+            <div id="messages">
+                <h1 class="center">Messages From Luke</h1>
+                <p class="center" id="messagesFro">None</p>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <p id="footer"><a href="feedback.html" class="text">Send Site Feedback</a>&nbsp;<span class="separator">|</span>&nbsp;<a href="../index.html" class="text">Back to Site</a></p>
         <style>
-            @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+            @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Source+Sans+Pro|Roboto:300');
+            /*|Roboto|Roboto+Condensed|*/
             .login-page {
                 width: 360px;
                 padding: 8% 0 0;
@@ -121,6 +150,21 @@
                 font-family: "Roboto", sans-serif;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;      
+            }
+            .center {
+                text-align: center;
+                font-family: 'Source Sans Pro';
+            }
+            #hr {
+                width: 20%;
+                color: black;
+            }
+            .text {
+                text-decoration: none;
+                color: black;
+            }
+            #footer {
+                text-align: center;
             }
         </style>
     </body>

@@ -1,14 +1,15 @@
 /*// Initialize Firebase
 (function(){*/
-    var config = {
-        apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
-        authDomain: "game-jumper-tester.firebaseapp.com",
-        databaseURL: "https://game-jumper-tester.firebaseio.com",
-        projectId: "game-jumper-tester",
-        storageBucket: "game-jumper-tester.appspot.com",
-        messagingSenderId: "457793690679"
-    };
-    firebase.initializeApp(config);
+//ADD HEY, (X); SIGNOUT BUTTON
+var config = {
+    apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
+    authDomain: "game-jumper-tester.firebaseapp.com",
+    databaseURL: "https://game-jumper-tester.firebaseio.com",
+    projectId: "game-jumper-tester",
+    storageBucket: "game-jumper-tester.appspot.com",
+    messagingSenderId: "457793690679"
+};
+firebase.initializeApp(config);
     /*//Get Elements
     const txtEmail = document.getElementById('txtEmail');
     const txtPassword = document.getElementById('txtPassword');
@@ -47,13 +48,94 @@ function toggleSignIn() {
     // [START authwithemail]
     firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
         if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
-            console.log("Luke");
+            console.log("Luke - Test Account");
+            var usersName = "Test";
+            var userData = {
+                currentMoney: "TEST VERSION",
+                nextPayday: "TEST VERSION",
+                lukeMessages: "TEST VERSION",
+                estimatedMoney: "TEST VERSION"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
+            //
         } else if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
             console.log("Jake");
+            var usersName = "Jake";
+            var userData = {
+                currentMoney: "$0",
+                nextPayday: "Jan 5th",
+                lukeMessages: "None",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            //
         } else if(firebase.auth().currentUser.email == "jasonkarch04@gmail.com") {
             console.log("Jason");
+            var usersName = "Jason";
+            var userData = {
+                currentMoney: "$0",
+                nextPayday: "Jan 5th",
+                lukeMessages: "None",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            //
         } else if(firebase.auth().currentUser.email == "gamejumpergj@gmail.com") {
             console.log("Test Account");
+            var usersName = "Test";
+            var userData = {
+                currentMoney: "TEST VERSION",
+                nextPayday: "TEST VERSION",
+                lukeMessages: "TEST VERSION",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            //
         } else {
             console.log("Not signed in");
         }
@@ -92,7 +174,17 @@ function initApp() {
             /*document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
             document.getElementById('quickstart-sign-in').textContent = 'Sign out';
             document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');*/
-        }
+        }/* else {*/
+        var userOverview = document.getElementById('testerSection');
+        var helloText = document.getElementById('hello-text');
+            /*if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {*/
+        userOverview.style.display = "none";
+        helloText.style.display = "none";
+        /*
+            }
+        }*/
     });
     // [END authstatelistener]
     document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
