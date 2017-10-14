@@ -174,17 +174,11 @@ function initApp() {
             /*document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
             document.getElementById('quickstart-sign-in').textContent = 'Sign out';
             document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');*/
-        }/* else {*/
-        var userOverview = document.getElementById('testerSection');
-        var helloText = document.getElementById('hello-text');
-            /*if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {*/
-        userOverview.style.display = "none";
-        helloText.style.display = "none";
-        /*
-            }
-        }*/
+        } else {
+            var helloText = document.getElementById('hello-text');
+            /*userOverview.style.display = "none";*/
+            helloText.style.display = "none";
+        }
     });
     // [END authstatelistener]
     document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
