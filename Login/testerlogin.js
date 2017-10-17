@@ -76,7 +76,7 @@ function toggleSignIn() {
             var userData = {
                 currentMoney: "$0",
                 nextPayday: "Jan 5th",
-                lukeMessages: "None",
+                lukeMessages: "New Game Up on Saturday",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -98,7 +98,7 @@ function toggleSignIn() {
             var userData = {
                 currentMoney: "$0",
                 nextPayday: "Jan 5th",
-                lukeMessages: "None",
+                lukeMessages: "New Game Up on Saturday",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -122,6 +122,28 @@ function toggleSignIn() {
                 nextPayday: "TEST VERSION",
                 lukeMessages: "TEST VERSION",
                 estimatedMoney: "TEST VERSION"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            //
+        } else if(firebase.auth().currentUser.email == "eloftus1888@gmail.com") {
+            console.log("Eamon");
+            var usersName = "Eamon";
+            var userData = {
+                currentMoney: "$0",
+                nextPayday: "Jan 5th",
+                lukeMessages: "New Game Up on Saturday",
+                estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
