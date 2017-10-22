@@ -91,6 +91,7 @@ function toggleSignIn() {
             document.getElementById('estimation').innerHTML = userData.estimatedMoney;
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
             //
         } else if(firebase.auth().currentUser.email == "jkarch04@gmail.com") {
             console.log("Jason");
@@ -113,6 +114,7 @@ function toggleSignIn() {
             document.getElementById('estimation').innerHTML = userData.estimatedMoney;
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
             //
         } else if(firebase.auth().currentUser.email == "gamejumpergj@gmail.com") {
             console.log("Test Account");
@@ -135,6 +137,7 @@ function toggleSignIn() {
             document.getElementById('estimation').innerHTML = userData.estimatedMoney;
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
             //
         } else if(firebase.auth().currentUser.email == "eloftus1888@gmail.com") {
             console.log("Eamon");
@@ -157,6 +160,7 @@ function toggleSignIn() {
             document.getElementById('estimation').innerHTML = userData.estimatedMoney;
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
             //
         } else {
             console.log("Not signed in");
