@@ -74,7 +74,7 @@ function toggleSignIn() {
             console.log("Jake");
             var usersName = "Jake";
             var userData = {
-                currentMoney: "$0",
+                currentMoney: "$0.05",
                 nextPayday: "Jan 5th",
                 lukeMessages: "New Game Up on Saturday",
                 estimatedMoney: "$3.75"
@@ -97,7 +97,7 @@ function toggleSignIn() {
             console.log("Jason");
             var usersName = "Jason";
             var userData = {
-                currentMoney: "$0",
+                currentMoney: "$0.05",
                 nextPayday: "Jan 5th",
                 lukeMessages: "New Game Up on Saturday",
                 estimatedMoney: "$3.75"
@@ -143,7 +143,7 @@ function toggleSignIn() {
             console.log("Eamon");
             var usersName = "Eamon";
             var userData = {
-                currentMoney: "$0",
+                currentMoney: "$0.05",
                 nextPayday: "Jan 5th",
                 lukeMessages: "New Game Up on Saturday",
                 estimatedMoney: "$3.75"
@@ -162,6 +162,28 @@ function toggleSignIn() {
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
             //
+        } else if(firebase.auth().currentUser.email == "lvgamejumper@gmail.com") {
+            console.log("Luke V.");
+            var usersName = "Luke";
+            var userData = {
+                currentMoney: "$0",
+                nextPayday: "Jan 5th",
+                lukeMessages: "New Game Up on Saturday",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
         } else {
             console.log("Not signed in");
         }
