@@ -47,7 +47,8 @@ function toggleSignIn() {
     // Sign in with email and pass.
     // [START authwithemail]
     firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-        if(firebase.auth().currentUser.email == "lukestrong47@gmail.com") {
+        //Luke
+        if(firebase.auth().currentUser.uid == "Znk2Zr5kmUWQ4SldxGuD7AD8ACg1") {
             console.log("Luke - Test Account");
             var usersName = "Test";
             var userData = {
@@ -69,14 +70,14 @@ function toggleSignIn() {
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
-            //
-        } else if(firebase.auth().currentUser.email == "jaket.goldman@gmail.com") {
+            //Jake
+        } else if(firebase.auth().currentUser.uid == "ag5fcDkeIAQO4wpeDBHHYBwo2ju1") {
             console.log("Jake");
             var usersName = "Jake";
             var userData = {
                 currentMoney: "$0.05",
                 nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -92,14 +93,14 @@ function toggleSignIn() {
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
-            //
-        } else if(firebase.auth().currentUser.email == "jkarch04@gmail.com") {
+            //Jason
+        } else if(firebase.auth().currentUser.uid == "7v5GdmYyAka4bzWO2KWJ9Ou8R472") {
             console.log("Jason");
             var usersName = "Jason";
             var userData = {
                 currentMoney: "$0.05",
                 nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -115,8 +116,8 @@ function toggleSignIn() {
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
-            //
-        } else if(firebase.auth().currentUser.email == "gamejumpergj@gmail.com") {
+            //Game Jumper
+        } else if(firebase.auth().currentUser.uid == "sfRa7FV7RkaXg2Nq8rpCM6HB3sF3") {
             console.log("Test Account");
             var usersName = "Test";
             var userData = {
@@ -138,14 +139,14 @@ function toggleSignIn() {
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
-            //
-        } else if(firebase.auth().currentUser.email == "eloftus1888@gmail.com") {
+            //Eamon
+        } else if(firebase.auth().currentUser.uid == "T2yzm2nCcVYMFjcNnkFn48WFTrw1") {
             console.log("Eamon");
             var usersName = "Eamon";
             var userData = {
                 currentMoney: "$0.10",
                 nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -161,14 +162,83 @@ function toggleSignIn() {
             document.getElementById('payDay').innerHTML = userData.nextPayday;
             document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
             document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
-            //
-        } else if(firebase.auth().currentUser.email == "lvgamejumper@gmail.com") {
-            console.log("Luke V.");
+            //Luke V
+        } else if(firebase.auth().currentUser.uid == "Q4r3VTu0UNX2fW4qufKksTz2tli2") {
+            console.log("Luke II");
             var usersName = "Luke";
             var userData = {
                 currentMoney: "$0.10",
                 nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
+            //Paul
+        } else if(firebase.auth().currentUser.uid == "E8VLEEeJxmhZ5guXDlCeb98ZHtc2") {
+            console.log("Paul");
+            var usersName = "Paul";
+            var userData = {
+                currentMoney: "$0.00",
+                nextPayday: "Jan 5th",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
+            //Nathan
+        } else if(firebase.auth().currentUser.uid == "IGiaOqJpPfXjiyJSSNmmcFBWt333") {
+            console.log("Nathan");
+            var usersName = "Nathan";
+            var userData = {
+                currentMoney: "$0.00",
+                nextPayday: "Jan 5th",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
+                estimatedMoney: "$3.75"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
+            //Ryan
+        } else if(firebase.auth().currentUser.uid == "q9MLq3OyqBhhp0qKWCi60fiBIWj1") {
+            console.log("Ryan");
+            var usersName = "Ryan";
+            var userData = {
+                currentMoney: "$0.00",
+                nextPayday: "Jan 5th",
+                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
