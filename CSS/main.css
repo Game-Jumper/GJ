@@ -7,7 +7,7 @@ body, html {
     margin: 0;
 }
 .bgimg {
-    background-image: url('http://w3schools.com/w3images/forestbridge.jpg');
+    background-image: url('../assets/forestbridge.jpg');
     height: 100%;
     background-position: center;
     background-size: cover;
