@@ -43,7 +43,7 @@ function toggleSignIn() {
             var userData = {
                 money: "$24",
                 name: "Chance",
-                lukeMessages: "Check Out This - https://gamedistribution.com/developers/"
+                lukeMessages: "Nawthing"
             };
             var userOverallData = document.getElementById('adminSection');
             userOverallData.style.display = "block";
