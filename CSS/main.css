@@ -2,6 +2,9 @@
     background: transparent;
     clear:left;
 }
+#mobile {
+    display: none;
+}
 body, html {
     height: 100%;
     margin: 0;
@@ -49,4 +52,12 @@ hr {
 }
 .clear {
     text-align: center;
+}
+@media screen and (max-width: 480px) {
+    #computer {
+        display: none;
+    }
+    #mobile {
+        display: block;
+    }
 }
