@@ -190,7 +190,7 @@ function toggleSignIn() {
             console.log("Paul");
             var usersName = "Paul";
             var userData = {
-                currentMoney: "$0.00",
+                currentMoney: "$0.15",
                 nextPayday: "Jan 5th",
                 lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
@@ -213,7 +213,7 @@ function toggleSignIn() {
             console.log("Nathan");
             var usersName = "Nathan";
             var userData = {
-                currentMoney: "$0.00",
+                currentMoney: "$0.15",
                 nextPayday: "Jan 5th",
                 lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
