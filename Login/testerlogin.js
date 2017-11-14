@@ -75,7 +75,7 @@ function toggleSignIn() {
             console.log("Jake");
             var usersName = "Jake";
             var userData = {
-                currentMoney: "$0.05",
+                currentMoney: "$0.20",
                 nextPayday: "Jan 5th",
                 lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
                 estimatedMoney: "$3.75"
