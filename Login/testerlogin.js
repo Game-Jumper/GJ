@@ -46,6 +46,7 @@ function toggleSignIn() {
     }
     // Sign in with email and pass.
     // [START authwithemail]
+    
     firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
         //Luke
         if(firebase.auth().currentUser.uid == "Znk2Zr5kmUWQ4SldxGuD7AD8ACg1") {
