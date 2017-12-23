@@ -8,8 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-        <title>Forgot Password</title>
+        <title>Game Jumper</title>
         <meta name="title" content="Game Jumper">
         <meta name="description" content="Game Jumper allows you to play great games for free, made by us.">
         <meta name="keywords" content="games, game jumper, fun games, free, free games, great games">
@@ -31,7 +30,7 @@
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="games.html">Games</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
                 <form class="form-inline" action="//www.findberry.com/search/" method="get" id="sr_iframe" style="padding-top: 8px;">
                     <input type="hidden" name="wid" value="7418" />
@@ -41,15 +40,6 @@
             </div>
         </nav>
         <div id="container">
-            <h1 id="banner">Reset Your Password</h1>
-            <form class="form-inline">
-                <div class="form-group mx-sm-3">
-                    <label for="inputPassword2" class="sr-only">Email</label>
-                    <input type="email" class="form-control" id="input" placeholder="Email">
-                </div>
-                <br>
-                <button type="button" class="btn btn-primary" onclick="onSubmit()">Reset Password</button>
-            </form>
         </div>
         <br>
         <br>
@@ -69,32 +59,5 @@
             background-color: #5bc0de;
             border-color: #5bc0de;
         }
-        h1 {
-            text-align: center;
-        }
-        form {
-            display: table;
-            margin: 0 auto;
-        }
     </style>
-    <script>
-        var config = {
-            apiKey: "AIzaSyCiPbUFz41fy0pet2Xeva_iB3G78DOhpuI",
-            authDomain: "game-jumper-customer.firebaseapp.com",
-            databaseURL: "https://game-jumper-customer.firebaseio.com",
-            projectId: "game-jumper-customer",
-            storageBucket: "game-jumper-customer.appspot.com",
-            messagingSenderId: "917916079945"
-        };
-        firebase.initializeApp(config);
-        function onSubmit() {
-            var email = document.getElementById('input').value;
-            var auth = firebase.auth();
-            auth.sendPasswordResetEmail(email).then(function() {
-                document.getElementById('banner').innerHTML = "Email Sent!";
-            }).catch(function(error) {
-                alert(error);
-            });
-        }
-    </script>
 </html>

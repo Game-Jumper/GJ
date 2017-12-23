@@ -8,8 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-        <title>Forgot Password</title>
+        <title>Contact</title>
         <meta name="title" content="Game Jumper">
         <meta name="description" content="Game Jumper allows you to play great games for free, made by us.">
         <meta name="keywords" content="games, game jumper, fun games, free, free games, great games">
@@ -19,6 +18,7 @@
         <meta name="revisit-after" content="7">
         <meta name="author" content="Game Jumper">
         <link rel="icon" href="assets/favicon.ico">
+        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     </head>
     <body>
@@ -31,7 +31,7 @@
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="games.html">Games</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
                 <form class="form-inline" action="//www.findberry.com/search/" method="get" id="sr_iframe" style="padding-top: 8px;">
                     <input type="hidden" name="wid" value="7418" />
@@ -41,14 +41,24 @@
             </div>
         </nav>
         <div id="container">
-            <h1 id="banner">Reset Your Password</h1>
-            <form class="form-inline">
-                <div class="form-group mx-sm-3">
-                    <label for="inputPassword2" class="sr-only">Email</label>
-                    <input type="email" class="form-control" id="input" placeholder="Email">
+            <h1 style="text-align: center;" id="heading">Contact Us</h1>
+            <form onsubmit="submitForm()">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <br>
+                    <input type="text" class="inputNew" id="name" aria-describedby="emailHelp" placeholder="Email">
                 </div>
-                <br>
-                <button type="button" class="btn btn-primary" onclick="onSubmit()">Reset Password</button>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email:</label>
+                    <br>
+                    <input type="email" class="inputNew" id="email" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Message:</label>
+                    <br>
+                    <textarea class="inputNew" placeholder="Message" rows="12" id="message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btnNew">Submit</button>
             </form>
         </div>
         <br>
@@ -69,12 +79,20 @@
             background-color: #5bc0de;
             border-color: #5bc0de;
         }
-        h1 {
-            text-align: center;
+        .inputNew {
+            border-radius: 5px;
         }
-        form {
-            display: table;
+        .btnNew, .inputNew, label {
+            text-align: center;
+            display: block;
             margin: 0 auto;
+        }
+        footer p a {
+            text-decoration: none;
+            color: black;
+        }
+        footer p a:hover {
+            text-decoration: none;
         }
     </style>
     <script>
@@ -86,14 +104,36 @@
             storageBucket: "game-jumper-customer.appspot.com",
             messagingSenderId: "917916079945"
         };
+        
         firebase.initializeApp(config);
-        function onSubmit() {
-            var email = document.getElementById('input').value;
-            var auth = firebase.auth();
-            auth.sendPasswordResetEmail(email).then(function() {
-                document.getElementById('banner').innerHTML = "Email Sent!";
-            }).catch(function(error) {
-                alert(error);
+
+        // Reference messages collection
+        var messagesRef = firebase.database().ref('messages');
+
+
+        // Submit form
+        function submitForm(){
+            // Get values
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var name = document.getElementById('name').value;
+
+            console.log(name);
+
+            // Save message
+            saveMessage(name, email, message);
+
+            // Clear form
+            document.getElementById('contactForm').reset();
+        }
+
+        // Save message to firebase
+        function saveMessage(email, message){
+            var newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: name,
+                email:email,
+                message:message
             });
         }
     </script>

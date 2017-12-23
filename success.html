@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>Game Jumper</title>
-        <meta name="title" content="Game Jumper">
+        <title>Sign Up</title>
+        <meta name="title" content="Sign Up">
         <meta name="description" content="Game Jumper allows you to play great games for free, made by us.">
         <meta name="keywords" content="games, game jumper, fun games, free, free games, great games">
         <meta name="robots" content="index, follow">
@@ -25,13 +25,13 @@
         <nav class="navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="">Game Jumper</a>
+                    <a class="navbar-brand" href="index.html">Game Jumper</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">Home</a></li>
-                    <li><a href="">Pricing</a></li>
-                    <li><a href="">Games</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <form class="form-inline" action="//www.findberry.com/search/" method="get" id="sr_iframe" style="padding-top: 8px;">
                     <input type="hidden" name="wid" value="7418" />
@@ -48,7 +48,7 @@
 			    		   <h3 class="panel-title">Please Signup For Game Jumper</h3>
 			 			</div>
 			 			<div class="panel-body">
-			    		   <form role="form" onsubmit="submitForm()">
+			    		   <form role="form" id="form">
                                <div class="row">
                                    <div class="col-xs-6 col-sm-6 col-md-6">
                                        <div class="form-group">
@@ -76,7 +76,7 @@
                                        </div>
                                    </div>
                                </div>
-                               <input type="submit" value="Register" class="btn btn-info btn-block" onclick="submitForm()">			    		
+                               <input type="button" value="Register" class="btn btn-info btn-block" onclick="submitForm()">
                             </form>
                         </div>
                     </div>
@@ -135,25 +135,29 @@
         function submitForm() {
             if(document.getElementById('password_confirmation').value == document.getElementById('password').value) {
                 password = document.getElementById('password').value;
+                email = document.getElementById('email').value;
+                username = document.getElementById('username').value;
+                firstName = document.getElementById('first_name').value;
+                firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
+                    console.log(firebase.auth().currentUser.uid);
+                    userId = firebase.auth().currentUser.uid;
+                    writeUserData(firebase.auth().currentUser.uid, firstName, email, username);
+                    document.getElementById('form').reset();
+                    alert('Signed Up!');
+                }).catch(function(error) {
+                    alert(error);
+                    document.getElementById('form').reset();
+                });
+                function writeUserData(userId, firstName, email, username) {
+                    firebase.database().ref('users/' + userId).set({
+                        name: firstName,
+                        email: email,
+                        username: username
+                    });
+                }
             } else {
                 alert('Passwords Do Not Match');
             }
-            email = document.getElementById('email').value;
-            username = document.getElementById('username');
-            firstName = document.getElementById('first_name');
-            firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
-                console.log(firebase.auth().currentUser.uid);
-                userId = firebase.auth().currentUser.uid;
-            }).catch(function(error) {
-                alert(error);
-            });
-            /*function writeUserData(userId, firstName, email, username) {
-                firebase.database().ref('users/' + userId).set({
-                    name: firstName,
-                    email: email,
-                    username: username
-                });
-            }*/
         }
     </script>
 </html>
