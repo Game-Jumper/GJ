@@ -54,16 +54,23 @@
             <ul class="breadcrumb">
                 <li><a href="../../games.html"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
             </ul>
+            <h1>Play Snak on Game Jumper</h1>
             <div id="game-main">
             </div>
             <div id="instructions">
-                <h1>Snake Instructions</h1>
+                <h1>How to Play</h1>
                 <p>Use the arrow keys to control the snake. Collect the apples, and grow big, but make sure not to run into your self.</p>
                 <p id="paragraph"><b>We'd like to hear your feedback on this game. Rate it below.</b></p>
                 <div class="alert" id="alert">Thank you for sending feedback!</div>
-                <img src="../../assets/up.png" width="60px" height="60px" class="img" onclick="thumbsUp()">
+                <table>
+                    <tr style="width: 100%;">
+                        <td style="align: center;"><img src="../../assets/up.png" width="60px" height="60px" class="img" onclick="thumbsUp()"></td>
+                        <td><img src="../../assets/down.png" width="50px" height="50px" class="img" onclick="thumbsDown()" id="imgTwo"></td>
+                    </tr>
+                </table>
                 <br>
-                <img src="../../assets/down.png" width="50px" height="50px" class="img" onclick="thumbsDown()" id="imgTwo">
+                <h4 style="text-align: center;">Check Out Something Else...</h4>
+                <img src="alt" alt="Advertisement Here" style="border: 1px solid black; text-align: center;" id="imgT">
             </div>
         </div>
         <br>
@@ -119,6 +126,13 @@
             color:#fff;
             display:none;
         }
+        h1 {
+            text-align: center;
+        }
+        #imgT {
+            display: block;
+            margin: 0 auto;
+        }
     </style>
     <script>
         var config = {
@@ -162,11 +176,21 @@
         function thumbsDown() {
             rating = "Bad";
             Cookies.set('rate', true);
+            document.getElementById('alert').style.display = 'block';
+            document.getElementById('imgTwo').style.display = 'none';
+            document.querySelector('.img').style.display = 'none';
+            document.getElementById('paragraph').style.display = 'none';
+
+            // Hide alert after 3 seconds
+            setTimeout(function(){
+                document.querySelector('.alert').style.display = 'none';
+            },3000);
+
             // Save message
             saveMessage(game, rating);
         }
         // Save message to firebase
-        function saveMessage(email, message){
+        function saveMessage(game, rating){
             var newMessageRef = messagesRef.push();
             newMessageRef.set({
                 game: game,
