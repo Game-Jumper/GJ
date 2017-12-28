@@ -7,8 +7,7 @@ var config = {
     messagingSenderId: "917916079945"
 };
 firebase.initializeApp(config);
-document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
-if(Cookies.get('email') != null) {
+/*if(Cookies.get('email') != null) {
     cEmail = Cookies.get('email');
     cPassword = Cookies.get('password');
     firebase.auth().signInWithEmailAndPassword(cEmail, cPassword).then(function() {
@@ -18,7 +17,7 @@ if(Cookies.get('email') != null) {
 } else {
     Cookies.set('email', 'placeholder');
     Cookies.set('password', 'placeholder');
-}
+}*/
 var cEmail;
 var cPassword
 function miniGamesClick() {
@@ -52,13 +51,13 @@ function logInClick() {
     document.getElementById('pong').style.display = "none";
     document.getElementById('form').style.display = "block";
     document.getElementById('forgot').style.display = "block";
-    if(firebase.auth().currentUser.uid.length > 5) {
+    if(firebase.auth().currentUser.uid.length != null/*> 5*/) {
         console.log(firebase.auth().currentUser);
         document.getElementById('congrats').style.display = "block";
         document.getElementById('form').style.display = "none";
         document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
     }
-    function toggleSignIn() {
+    function signMeIn() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
@@ -75,7 +74,7 @@ function logInClick() {
             if (errorCode === 'auth/wrong-password') {
                 alert('Invalid Login Credentials');
             } else {
-                alert(errorMessage + 'Try Again in a Few Seconds');
+                alert(errorMessage + ' Try Again in a Few Seconds');
             }
         });
     }
@@ -105,8 +104,7 @@ function logInClick() {
                 document.getElementById('login').innerHTML = "Login";
             }
         });
-        // [END authstatelistener]
-        document.getElementById('sign-in').addEventListener('click', toggleSignIn, false);
+        document.getElementById('sign-in').addEventListener('click', signMeIn, false);
     }
 }
 function recentGamesClick() {
