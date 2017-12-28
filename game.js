@@ -7,17 +7,19 @@ var config = {
     messagingSenderId: "917916079945"
 };
 firebase.initializeApp(config);
-/*if(Cookies.get('email') != null) {
-    cEmail = Cookies.get('email');
-    cPassword = Cookies.get('password');
-    firebase.auth().signInWithEmailAndPassword(cEmail, cPassword).then(function() {
-        console.log('Signed in');
-        document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
-    })
-} else {
-    Cookies.set('email', 'placeholder');
-    Cookies.set('password', 'placeholder');
-}*/
+
+firebase.auth().signInWithEmailAndPassword(sEmail, sPassword).then(function() {
+    document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
+    return true;
+}).catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    if (errorCode === 'auth/wrong-password') {
+        alert('Invalid Login Credentials');
+    } else {
+        alert(errorMessage + ' Try Again in a Few Seconds');
+    }
+});
 var cEmail;
 var cPassword
 function miniGamesClick() {
@@ -51,7 +53,7 @@ function logInClick() {
     document.getElementById('pong').style.display = "none";
     document.getElementById('form').style.display = "block";
     document.getElementById('forgot').style.display = "block";
-    if(firebase.auth().currentUser.uid.length != null/*> 5*/) {
+    if(firebase.auth().currentUser.uid.length > 5) {
         console.log(firebase.auth().currentUser);
         document.getElementById('congrats').style.display = "block";
         document.getElementById('form').style.display = "none";
