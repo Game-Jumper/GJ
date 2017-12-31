@@ -8,17 +8,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var sEmail = Cookies.get('email');
+var sPassword = Cookies.get('password');
+
 firebase.auth().signInWithEmailAndPassword(sEmail, sPassword).then(function() {
     document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
-    return true;
 }).catch(function(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    if (errorCode === 'auth/wrong-password') {
-        alert('Invalid Login Credentials');
-    } else {
-        alert(errorMessage + ' Try Again in a Few Seconds');
-    }
+    return true;
 });
 var cEmail;
 var cPassword
