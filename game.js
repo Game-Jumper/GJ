@@ -92,10 +92,11 @@ function logInClick() {
                 /*document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
                 document.getElementById('quickstart-sign-in').textContent = 'Sign out';
                 document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');*/
-                if(Cookies.get('email').length < 4) {
-                    document.getElementById('congrats').style.display = "block";
-                    document.getElementById('form').style.display = "none";
-                    document.getElementById('real').style.display = "none";
+                document.getElementById('congrats').style.display = "block";
+                document.getElementById('form').style.display = "none";
+                document.getElementById('real').style.display = "none";
+                if(firebase.auth().currentUser.emailVerified == false) {
+                    document.getElementById('verify').style.display == "block";
                 }
             } else {
                 console.log("No User");
@@ -112,4 +113,13 @@ function recentGamesClick() {
     document.getElementById('pong').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
+}
+function asteroidsClick() {
+    Cookies.set("asteroids", true);
+}
+function snakeClick() {
+    Cookies.set("snake", true);
+}
+function pongClick() {
+    Cookies.set("pong", true);
 }
