@@ -11,8 +11,11 @@ firebase.initializeApp(config);
 var sEmail = Cookies.get('email');
 var sPassword = Cookies.get('password');
 
+
 firebase.auth().signInWithEmailAndPassword(sEmail, sPassword).then(function() {
     document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
+    document.getElementById('recent').innerHTML = "Recently Played";
+    document.getElementById('recent').style.cursor = "pointer";
 }).catch(function(error) {
     return true;
 });
@@ -66,6 +69,8 @@ function logInClick() {
             document.getElementById('congrats').style.display = "block";
             document.getElementById('form').style.display = "none";
             document.getElementById('real').style.display = "none";
+            document.getElementById('recent').innerHTML = "Recently Played";
+            document.getElementById('recent').style.cursor = "pointer";
         }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -96,7 +101,7 @@ function logInClick() {
                 document.getElementById('form').style.display = "none";
                 document.getElementById('real').style.display = "none";
                 if(firebase.auth().currentUser.emailVerified == false) {
-                    document.getElementById('verify').style.display == "block";
+                    document.getElementById('verify').style.display = "block";
                 }
             } else {
                 console.log("No User");
@@ -107,19 +112,37 @@ function logInClick() {
     }
 }
 function recentGamesClick() {
-    document.getElementById('form').style.display = "none";
-    document.getElementById('asteroids').style.display = "none";
-    document.getElementById('snake').style.display = "none";
-    document.getElementById('pong').style.display = "none";
-    document.getElementById('congrats').style.display = "none";
-    document.getElementById('forgot').style.display = "none";
+    if(firebase.auth().currentUser.w == "game-jumper-customer.firebaseapp.com") {
+        document.getElementById('form').style.display = "none";
+        document.getElementById('asteroids').style.display = "none";
+        document.getElementById('snake').style.display = "none";
+        document.getElementById('pong').style.display = "none";
+        document.getElementById('congrats').style.display = "none";
+        document.getElementById('forgot').style.display = "none";
+        if(Cookies.get('asteroids') == "true") {
+            document.getElementById('asteroids').style.display = "block";
+        }
+        if(Cookies.get('snake') == "true") {
+            document.getElementById('snake').style.display = "block";
+        }
+        if(Cookies.get('pong') == "true") {
+            document.getElementById('pong').style.display = "block";
+        }
+    }
 }
 function asteroidsClick() {
-    Cookies.set("asteroids", true);
+    Cookies.set('asteroids', 'true');
 }
 function snakeClick() {
-    Cookies.set("snake", true);
+    Cookies.set('snake', 'true');
 }
 function pongClick() {
-    Cookies.set("pong", true);
+    Cookies.set('pong', 'true');
+}
+function checkFeature() {
+    if(firebase.auth().currentUser != null) {
+        return true;
+    } else {
+        document.getElementById('recent').style.textDecoration = "none";
+    }
 }

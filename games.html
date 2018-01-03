@@ -42,14 +42,14 @@
             </div>
         </nav>
         <img src="assets/GJ-1.png" class="img-responsive">
-        <ul class="breadcrumb">
+        <ul class="breadcrumb" id="navbar">
             <li id="all"><a href="#" onclick="allGamesClick()">All Games</a></li>
             <li><a href="#" onclick="fullGamesClick()" id="full">Full Games</a></li>
             <li><a href="#" onclick="miniGamesClick()" id="mini">Mini Games</a></li>
-            <li style="display: none;"  id="recent"><a href="#" onclick="recentGamesClick()">Liked</a></li>
+            <li><a href="#" onclick="recentGamesClick()" style="cursor: not-allowed" id="recent" onmouseover="checkFeature()">Premium Feature</a></li>
             <li><a href="#" onclick="logInClick()" id="login">Login</a></li>
         </ul>
-        <a href="Games/Asteroids/index.html">
+        <a href="Games/Asteroids/" onclick="asteroidsClick()" id="asteroidsCard">
             <div class="contain" id="asteroids">
                 <div class="card">
                     <img src="assets/asteroids.png" alt="Avatar" style="width:100%" id="img">
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </a>
-        <a href="Games/Snake/index.html">
+        <a href="Games/Snake" onclick="snakeClick()" id="snakeCard">
             <div class="contain" id="snake">
                 <div class="card">
                     <img src="assets/snake.png" alt="Avatar" style="width:100%" id="img">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </a>
-        <a href="Games/Pong/index.html">
+        <a href="Games/Pong/" onclick="pongClick()" id="pongCard">
             <div class="contain" id="pong">
                 <div class="card">
                     <img src="assets/pong.png" alt="Avatar" style="width:100%" id="img">
