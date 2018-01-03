@@ -21,6 +21,7 @@ firebase.auth().signInWithEmailAndPassword(sEmail, sPassword).then(function() {
 });
 var cEmail;
 var cPassword
+//
 function miniGamesClick() {
     document.getElementById('asteroids').style.display = "block";
     document.getElementById('snake').style.display = "block";
