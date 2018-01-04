@@ -28,6 +28,7 @@ function miniGamesClick() {
     document.getElementById('pong').style.display = "block";
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
+    document.getElementById('verify').style.display = "none";
     document.getElementById('forgot').style.display = "none";
 }
 function fullGamesClick() {
@@ -37,6 +38,7 @@ function fullGamesClick() {
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
+    document.getElementById('verify').style.display = "none";
 }
 function allGamesClick() {
     document.getElementById('asteroids').style.display = "block";
@@ -45,6 +47,7 @@ function allGamesClick() {
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
+    document.getElementById('verify').style.display = "none";
 }
 function logInClick() {
     initApp();
@@ -120,6 +123,7 @@ function recentGamesClick() {
         document.getElementById('pong').style.display = "none";
         document.getElementById('congrats').style.display = "none";
         document.getElementById('forgot').style.display = "none";
+        document.getElementById('verify').style.display = "none";
         if(Cookies.get('asteroids') == "true") {
             document.getElementById('asteroids').style.display = "block";
         }
