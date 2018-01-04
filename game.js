@@ -30,6 +30,7 @@ function miniGamesClick() {
     document.getElementById('congrats').style.display = "none";
     document.getElementById('verify').style.display = "none";
     document.getElementById('forgot').style.display = "none";
+    document.getElementById('change').style.display = "none";
 }
 function fullGamesClick() {
     document.getElementById('asteroids').style.display = "none";
@@ -39,6 +40,7 @@ function fullGamesClick() {
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
     document.getElementById('verify').style.display = "none";
+    document.getElementById('change').style.display = "none";
 }
 function allGamesClick() {
     document.getElementById('asteroids').style.display = "block";
@@ -48,6 +50,7 @@ function allGamesClick() {
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
     document.getElementById('verify').style.display = "none";
+    document.getElementById('change').style.display = "none";
 }
 function logInClick() {
     initApp();
@@ -104,6 +107,7 @@ function logInClick() {
                 document.getElementById('congrats').style.display = "block";
                 document.getElementById('form').style.display = "none";
                 document.getElementById('real').style.display = "none";
+                document.getElementById('change').style.display = "block";
                 if(firebase.auth().currentUser.emailVerified == false) {
                     document.getElementById('verify').style.display = "block";
                 }
@@ -124,6 +128,7 @@ function recentGamesClick() {
         document.getElementById('congrats').style.display = "none";
         document.getElementById('forgot').style.display = "none";
         document.getElementById('verify').style.display = "none";
+        document.getElementById('change').style.display = "none";
         if(Cookies.get('asteroids') == "true") {
             document.getElementById('asteroids').style.display = "block";
         }
@@ -146,8 +151,13 @@ function pongClick() {
 }
 function checkFeature() {
     if(firebase.auth().currentUser != null) {
-        return true;
+        document.getElementById('recent').style.textDecoration = "underline";
     } else {
         document.getElementById('recent').style.textDecoration = "none";
     }
+}
+function verifyAccount() {
+    firebase.auth().currentUser.sendEmailVerification().then(function() {
+        alert("Sent!");
+    })
 }

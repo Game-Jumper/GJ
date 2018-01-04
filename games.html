@@ -99,7 +99,8 @@
         </form>
         <p style="text-align: center; display: none;" id="forgot"><a href="forgot.html" style="text-align: center;" id="real">I Forgot My Password</a></p>
         <p style="display: none; text-align: center;" id="congrats">You're signed in! Enjoy Ad-Free games and content!</p>
-        <p style="display: none; text-align: center;" id="verify" class="none-dec">Verify Your Account</p>
+        <p style="display: none; text-align: center;" id="verify" class="none-dec"><a href="#" onclick="verifyAccount()">Verify Your Account</a></p>
+        <p style="display: none; text-align: center;" id="change" class="none-dec"><a href="forgot.html">Change Your Password</a></p>
         <br>
         <br>
         <br>
@@ -167,6 +168,9 @@
             text-decoration: none;
         }
         .none-dec:hover {
+            text-decoration: none;
+        }
+        #verify a:hover, #change a:hover {
             text-decoration: none;
         }
     </style>
