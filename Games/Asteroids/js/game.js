@@ -449,7 +449,7 @@ mainState.prototype = {
     },
 };
 
-var game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'gameDiv');
+var game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'game-main');
 game.state.add(states.main, mainState);
 game.state.add(states.game, gameState);
 game.state.start(states.main);
