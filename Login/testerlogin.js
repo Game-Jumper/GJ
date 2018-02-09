@@ -77,7 +77,7 @@ function toggleSignIn() {
             var userData = {
                 currentMoney: "$0.20",
                 nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
+                lukeMessages: "You will get paid $0.50 overall for this game. Payday Today!",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -99,9 +99,9 @@ function toggleSignIn() {
             var usersName = "Jason";
             var userData = {
                 currentMoney: "$0.05",
-                nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
-                estimatedMoney: "$3.75"
+                nextPayday: "March 9",
+                lukeMessages: "Payday Today!",
+                estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
@@ -145,9 +145,9 @@ function toggleSignIn() {
             var usersName = "Eamon";
             var userData = {
                 currentMoney: "$0.10",
-                nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
-                estimatedMoney: "$3.75"
+                nextPayday: "March 9",
+                lukeMessages: "Payday Today!",
+                estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
@@ -168,9 +168,9 @@ function toggleSignIn() {
             var usersName = "Luke";
             var userData = {
                 currentMoney: "$0.10",
-                nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
-                estimatedMoney: "$3.75"
+                nextPayday: "March 9",
+                lukeMessages: "Payday Today!",
+                estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
@@ -191,9 +191,9 @@ function toggleSignIn() {
             var usersName = "Paul";
             var userData = {
                 currentMoney: "$0.15",
-                nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
-                estimatedMoney: "$3.75"
+                nextPayday: "March 9",
+                lukeMessages: "Payday Today!",
+                estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
@@ -214,9 +214,9 @@ function toggleSignIn() {
             var usersName = "Nathan";
             var userData = {
                 currentMoney: "$0.15",
-                nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
-                estimatedMoney: "$3.75"
+                nextPayday: "March 9",
+                lukeMessages: "Payday Today!",
+                estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
@@ -237,9 +237,9 @@ function toggleSignIn() {
             var usersName = "Ryan";
             var userData = {
                 currentMoney: "$0.00",
-                nextPayday: "Jan 5th",
-                lukeMessages: "New Game Up on Saturday (11/3) - Luke on 10/31",
-                estimatedMoney: "$3.75"
+                nextPayday: "March 9",
+                lukeMessages: "Payday Today!",
+                estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
