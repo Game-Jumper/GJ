@@ -8,17 +8,17 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var sEmail = Cookies.get('email');
-var sPassword = Cookies.get('password');
+//var sEmail = Cookies.get('email');
+//var sPassword = Cookies.get('password');
 
 
-firebase.auth().signInWithEmailAndPassword(sEmail, sPassword).then(function() {
+/*firebase.auth().signInWithEmailAndPassword(sEmail, sPassword).then(function() {
     document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
     document.getElementById('recent').innerHTML = "Recently Played";
     document.getElementById('recent').style.cursor = "pointer";
 }).catch(function(error) {
     return true;
-});
+});*/
 var cEmail;
 var cPassword
 //
@@ -26,6 +26,7 @@ function miniGamesClick() {
     document.getElementById('asteroids').style.display = "block";
     document.getElementById('snake').style.display = "block";
     document.getElementById('pong').style.display = "block";
+    document.getElementById('newAge').style.display = "block";
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('verify').style.display = "none";
@@ -37,6 +38,7 @@ function fullGamesClick() {
     document.getElementById('snake').style.display = "none";
     document.getElementById('pong').style.display = "none";
     document.getElementById('form').style.display = "none";
+    document.getElementById('newAge').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
     document.getElementById('verify').style.display = "none";
@@ -46,6 +48,7 @@ function allGamesClick() {
     document.getElementById('asteroids').style.display = "block";
     document.getElementById('snake').style.display = "block";
     document.getElementById('pong').style.display = "block";
+    document.getElementById('newAge').style.display = "block";
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
@@ -57,6 +60,7 @@ function logInClick() {
     document.getElementById('asteroids').style.display = "none";
     document.getElementById('snake').style.display = "none";
     document.getElementById('pong').style.display = "none";
+    document.getElementById('newAge').style.display = "none";
     document.getElementById('form').style.display = "block";
     document.getElementById('forgot').style.display = "block";
     if(firebase.auth().currentUser.uid.length > 5) {
@@ -69,9 +73,9 @@ function logInClick() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-            Cookies.set('email', email);
-            Cookies.set('password', password);
-            cEmail = Cookies.get('email');
+            //Cookies.set('email', email);
+            //Cookies.set('password', password);
+            //cEmail = Cookies.get('email');
             document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
             document.getElementById('congrats').style.display = "block";
             document.getElementById('form').style.display = "none";
@@ -111,6 +115,9 @@ function logInClick() {
                 if(firebase.auth().currentUser.emailVerified == false) {
                     document.getElementById('verify').style.display = "block";
                 }
+                document.getElementById('login').innerHTML = "Logged In " + "(" + firebase.auth().currentUser.email + ")";
+                document.getElementById('recent').innerHTML = "Recently Played";
+                document.getElementById('recent').style.cursor = "pointer";
             } else {
                 console.log("No User");
                 document.getElementById('login').innerHTML = "Login";
@@ -125,6 +132,7 @@ function recentGamesClick() {
         document.getElementById('asteroids').style.display = "none";
         document.getElementById('snake').style.display = "none";
         document.getElementById('pong').style.display = "none";
+        document.getElementById('')
         document.getElementById('congrats').style.display = "none";
         document.getElementById('forgot').style.display = "none";
         document.getElementById('verify').style.display = "none";
@@ -138,6 +146,9 @@ function recentGamesClick() {
         if(Cookies.get('pong') == "true") {
             document.getElementById('pong').style.display = "block";
         }
+        if(Cookies.get('newAge') == "true") {
+            document.getElementById('newAge').style.display = "block";
+        }
     }
 }
 function asteroidsClick() {
@@ -148,6 +159,9 @@ function snakeClick() {
 }
 function pongClick() {
     Cookies.set('pong', 'true');
+}
+function newAgeClick() {
+    Cookies.set('newAge', 'true');
 }
 function checkFeature() {
     if(firebase.auth().currentUser != null) {
