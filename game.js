@@ -7,7 +7,7 @@ var config = {
     messagingSenderId: "917916079945"
 };
 firebase.initializeApp(config);
-
+initApp();
 //var sEmail = Cookies.get('email');
 //var sPassword = Cookies.get('password');
 

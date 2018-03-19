@@ -75,9 +75,9 @@ function toggleSignIn() {
             console.log("Jake");
             var usersName = "Jake";
             var userData = {
-                currentMoney: "$0.20",
-                nextPayday: "Jan 5th",
-                lukeMessages: "You will get paid $0.50 overall for this game. Payday Today!",
+                currentMoney: "$0.70",
+                nextPayday: "March 22",
+                lukeMessages: "You will get paid $0.50 overall for this game.",
                 estimatedMoney: "$3.75"
             };
             document.getElementById('email').value = "";
@@ -99,8 +99,8 @@ function toggleSignIn() {
             var usersName = "Jason";
             var userData = {
                 currentMoney: "$0.05",
-                nextPayday: "March 9",
-                lukeMessages: "Payday Today!",
+                nextPayday: "March 22",
+                lukeMessages: "Contact Luke if you are interested in Linguine Coin payments.",
                 estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
@@ -144,9 +144,9 @@ function toggleSignIn() {
             console.log("Eamon");
             var usersName = "Eamon";
             var userData = {
-                currentMoney: "$0.10",
-                nextPayday: "March 9",
-                lukeMessages: "Payday Today!",
+                currentMoney: "$0.15",
+                nextPayday: "March 22",
+                lukeMessages: "Contact Luke if you are interested in Linguine Coin payments.",
                 estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
@@ -167,9 +167,9 @@ function toggleSignIn() {
             console.log("Luke II");
             var usersName = "Luke";
             var userData = {
-                currentMoney: "$0.10",
-                nextPayday: "March 9",
-                lukeMessages: "Payday Today!",
+                currentMoney: "$0.15",
+                nextPayday: "March 22",
+                lukeMessages: "Contact Luke if you are interested in Linguine Coin payments.",
                 estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
@@ -190,9 +190,9 @@ function toggleSignIn() {
             console.log("Paul");
             var usersName = "Paul";
             var userData = {
-                currentMoney: "$0.15",
-                nextPayday: "March 9",
-                lukeMessages: "Payday Today!",
+                currentMoney: "$0.20",
+                nextPayday: "March 22",
+                lukeMessages: "Contact Luke if you are interested in Linguine Coin payments.",
                 estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
@@ -214,8 +214,8 @@ function toggleSignIn() {
             var usersName = "Nathan";
             var userData = {
                 currentMoney: "$0.15",
-                nextPayday: "March 9",
-                lukeMessages: "Payday Today!",
+                nextPayday: "March 22",
+                lukeMessages: "Contact Luke if you are interested in Linguine Coin payments.",
                 estimatedMoney: "$1.00"
             };
             document.getElementById('email').value = "";
@@ -237,9 +237,31 @@ function toggleSignIn() {
             var usersName = "Ryan";
             var userData = {
                 currentMoney: "$0.00",
-                nextPayday: "March 9",
-                lukeMessages: "Payday Today!",
+                nextPayday: "March 22",
+                lukeMessages: "Contact Luke if you are interested in Linguine Coin payments.",
                 estimatedMoney: "$1.00"
+            };
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+            var userOverallData = document.getElementById('testerSection');
+            userOverallData.style.display = "block";
+            var loginData = document.getElementById('login-page');
+            loginData.style.display = "none";
+            var helloText = document.getElementById('hello-text');
+            helloText.style.display = "block";
+            document.getElementById('yourMoney').innerHTML = userData.currentMoney;
+            document.getElementById('estimation').innerHTML = userData.estimatedMoney;
+            document.getElementById('payDay').innerHTML = userData.nextPayday;
+            document.getElementById('messagesFro').innerHTML = userData.lukeMessages;
+            document.getElementById('hello-text').innerHTML = "Hello, " + usersName + "!";
+        } else if(firebase.auth().currentUser.uid == "KNeZHx2TXETcGkWLXeYrugQuUHm1") {
+            console.log("Jason O");
+            var usersName = "Jason";
+            var userData = {
+                currentMoney: "$0.00",
+                nextPayday: "March 22",
+                lukeMessages: "Payday Soon!",
+                estimatedMoney: "$0.50"
             };
             document.getElementById('email').value = "";
             document.getElementById('password').value = "";
