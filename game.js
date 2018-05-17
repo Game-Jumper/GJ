@@ -27,6 +27,7 @@ function miniGamesClick() {
     document.getElementById('snake').style.display = "block";
     document.getElementById('pong').style.display = "block";
     document.getElementById('newAge').style.display = "block";
+    document.getElementById('helicopter').style.display = "none";
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('verify').style.display = "none";
@@ -34,6 +35,7 @@ function miniGamesClick() {
     document.getElementById('change').style.display = "none";
 }
 function fullGamesClick() {
+    document.getElementById('helicopter').style.display = "block";
     document.getElementById('asteroids').style.display = "none";
     document.getElementById('snake').style.display = "none";
     document.getElementById('pong').style.display = "none";
@@ -45,6 +47,7 @@ function fullGamesClick() {
     document.getElementById('change').style.display = "none";
 }
 function allGamesClick() {
+    document.getElementById('helicopter').style.display = "block";
     document.getElementById('asteroids').style.display = "block";
     document.getElementById('snake').style.display = "block";
     document.getElementById('pong').style.display = "block";
@@ -57,6 +60,7 @@ function allGamesClick() {
 }
 function logInClick() {
     initApp();
+    document.getElementById('helicopter').style.display = "none";
     document.getElementById('asteroids').style.display = "none";
     document.getElementById('snake').style.display = "none";
     document.getElementById('pong').style.display = "none";
@@ -132,7 +136,7 @@ function recentGamesClick() {
         document.getElementById('asteroids').style.display = "none";
         document.getElementById('snake').style.display = "none";
         document.getElementById('pong').style.display = "none";
-        document.getElementById('')
+        document.getElementById('helicopter').style.display = "none";
         document.getElementById('congrats').style.display = "none";
         document.getElementById('forgot').style.display = "none";
         document.getElementById('verify').style.display = "none";
@@ -149,6 +153,9 @@ function recentGamesClick() {
         if(Cookies.get('newAge') == "true") {
             document.getElementById('newAge').style.display = "block";
         }
+        if(Cookies.get('helicopter') == "true") {
+            document.getElementById('helicopter').style.display = "block";
+        }
     }
 }
 function asteroidsClick() {
@@ -163,6 +170,9 @@ function pongClick() {
 function newAgeClick() {
     Cookies.set('newAge', 'true');
 }
+function helicopterClick() {
+    Cookies.set('helicopter', 'true');
+}
 function checkFeature() {
     if(firebase.auth().currentUser != null) {
         document.getElementById('recent').style.textDecoration = "underline";
@@ -173,5 +183,5 @@ function checkFeature() {
 function verifyAccount() {
     firebase.auth().currentUser.sendEmailVerification().then(function() {
         alert("Sent!");
-    })
+    });
 }
