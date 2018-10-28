@@ -21,15 +21,8 @@
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script src="../Phaser/phaser.min.js"></script>
         <script src="game.js"></script>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-6951662897314070",
-                enable_page_level_ads: true
-            });
-        </script>
     </head>
-    <body>
+    <body onload="checkUser('pong');">
         <nav class="navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -59,14 +52,14 @@
             <div id="instructions">
                 <h1>How to Play</h1>
                 <p>Click to start this simple remake of the original game PONG. Then, click to get the ball moving. You control the left paddle with your mouse. The other paddle is controlled by AI.</p>
-                <!--<h4 style="text-align: center;">Check Out Something Else...</h4>
-                <img src="alt" alt="Advertisement Here" style="border: 1px solid black; text-align: center;">!-->
+                <br>
+                <p id="save" style="text-align: center;" onclick="saveGame('pong');">Save Game</p>
             </div>
         </div>
         <br>
         <br>
         <br>
-        <footer><p style="text-align: center;"><a href="https://game-jumper.freshdesk.com">Support</a> | <a href="../../Login/testerlogin.html">Tester</a> | <a href="../../Login/adminlogin.html">Admin</a></p></footer>
+        <footer><p style="text-align: center;"><a href="https://game-jumper.freshdesk.com">Support</a> | <a href="../../Login/testerlogin.html">Tester</a> | <a href="../../Login/adminlogin.html">Admin</a></p><br></footer>
     </body>
     <style>
         .btn-outline-info {
@@ -109,6 +102,12 @@
         img {
             display: block;
             margin: 0 auto;
+        }
+        #save {
+            color: dodgerblue;
+        }
+        #save:hover {
+            cursor: pointer;
         }
     </style>
 </html>

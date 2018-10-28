@@ -20,10 +20,11 @@
         <link rel="icon" href="../../assets/favicon.ico">
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
-    <script src="TemplateData/UnityProgress.js"></script>
+        <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+        <script src="TemplateData/UnityProgress.js"></script>
+        <script src="../../game.js"></script>
     </head>
-    <body>
+    <body onload="checkUser('helicopter');">
         <nav class="navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -52,6 +53,7 @@
             <div id="instructions">
                 <h1>How To Play</h1>
                 <p>Use W to move up, S to drop down, D to tilt turn right, A to tilt turn right, the up arrow to move forward, the down arrow to move backwards, and the left and right arrow keys to turn.</p>
+                <p id="save" style="text-align: center;" onclick="saveGame('helicopter');">Save Game</p>
             </div>
         </div>
         <br>
@@ -110,6 +112,12 @@
         }
         #img-2 {
             border-radius: 2px;
+        }
+        #save {
+            color: dodgerblue;
+        }
+        #save:hover {
+            cursor: pointer;
         }
     </style>
 </html>

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
         <title>Asteroids on Game Jumper</title>
         <meta name="title" content="Asteroids on Game Jumper">
         <meta name="description" content="Play Asteroids free on Game Jumper (gamejumper.info)">
@@ -19,10 +20,11 @@
         <meta name="author" content="Game Jumper">
         <link rel="icon" href="../../assets/favicon.ico">
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-        <!--<script src="../Phaser/phaser.min.js"></script>
-        <script src="js/game.js"></script>!-->
+        <script src="../../game.js"></script>
+        <script src="../Phaser/phaser.min.js"></script>
+        <script src="js/game.js"></script>
     </head>
-    <body>
+    <body onload="checkUser('asteroids');">
         <nav class="navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -48,17 +50,17 @@
             </ul>
             <h1>Play Asteroids on Game Jumper</h1>
             <div id="game-main">
-                <!-- style="width: 640px; height: 480px"!-->
-                <iframe src="//html5.GameDistribution.com/f4fd9bca0f40431382f23ec49deb89b9/" width="800" height="500" scrolling="none" frameborder="0"></iframe>
+                <!--<iframe src="//html5.GameDistribution.com/f4fd9bca0f40431382f23ec49deb89b9/" width="800" height="500" scrolling="none" frameborder="0"></iframe>!-->
             </div>
             <div id="instructions">
                 <h1>How To Play</h1>
                 <p>Click to start this remake of Asteroids. Use the arrow keys to move. Up propels you further, and the left and right arrows turn you. Click the space buttton to shoot.</p>
+                <p id="save" style="text-align: center;" onclick="saveGame('asteroids');">Save Game</p>
             </div>
         </div>
         <br>
         <br>
-        <br>
+        <br id="auth">
         <footer><p style="text-align: center;"><a href="https://game-jumper.freshdesk.com">Support</a> | <a href="../../Login/testerlogin.html">Tester</a> | <a href="../../Login/adminlogin.html">Admin</a></p></footer>
     </body>
     <style>
@@ -109,6 +111,12 @@
         img {
             display: block;
             margin: 0 auto;
+        }
+        #save {
+            color: dodgerblue;
+        }
+        #save:hover {
+            cursor: pointer;
         }
     </style>
 </html>

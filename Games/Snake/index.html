@@ -22,15 +22,9 @@
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script src="main.js"></script>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-6951662897314070",
-                enable_page_level_ads: true
-            });
-        </script>
+        <script src="../../game.js"></script>
     </head>
-    <body>
+    <body onload="checkUser('snake');">
         <nav class="navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -71,9 +65,10 @@
                 <br>
                 <h4 style="text-align: center;">Check Out Something Else...</h4>
                 <img src="alt" alt="Advertisement Here" style="border: 1px solid black; text-align: center;" id="imgT">!-->
+                <p id="save" style="text-align: center;" onclick="saveGame('snake');">Save Game</p>
             </div>
         </div>
-        <br>
+        <br id="auth">
         <br>
         <br>
         <footer><p style="text-align: center;"><a href="https://game-jumper.freshdesk.com">Support</a> | <a href="../../Login/testerlogin.html">Tester</a> | <a href="../../Login/adminlogin.html">Admin</a></p></footer>
@@ -132,6 +127,12 @@
         #imgT {
             display: block;
             margin: 0 auto;
+        }
+        #save {
+            color: dodgerblue;
+        }
+        #save:hover {
+            cursor: pointer;
         }
     </style>
     <script>

@@ -46,7 +46,7 @@
             <li id="all"><a href="#" onclick="allGamesClick()">All Games</a></li>
             <li><a href="#" onclick="fullGamesClick()" id="full">Full Games</a></li>
             <li><a href="#" onclick="miniGamesClick()" id="mini">Mini Games</a></li>
-            <li><a href="#" onclick="recentGamesClick()" style="cursor: not-allowed" id="recent" onmouseover="checkFeature()">Premium Feature</a></li>
+            <li><a href="#" onclick="recentGamesClick()" style="cursor: not-allowed" id="recent" onmouseover="checkFeature()" onmouseout="document.getElementById('recent').style.textDecoration = 'none'">Premium Feature</a></li>
             <li><a href="#" onclick="logInClick()" id="login">Login</a></li>
         </ul>
         <a href="Games/Asteroids/" onclick="asteroidsClick()" id="asteroidsCard">
@@ -113,7 +113,7 @@
                     <td><input type="Password" size=25 placeholder="Password" id="password" class="input"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" id="sign-in" value="Login" class="btn two"></td>
+                    <td><input type="button" id="sign-in" value="Login" class="btn two" onclick="signMeIn()"></td>
                 </tr>
             </table>
         </form>
@@ -121,10 +121,10 @@
         <p style="display: none; text-align: center;" id="congrats">You're signed in! Enjoy Ad-Free games and content!</p>
         <p style="display: none; text-align: center;" id="verify" class="none-dec"><a href="#" onclick="verifyAccount()">Verify Your Account</a></p>
         <p style="display: none; text-align: center;" id="change" class="none-dec"><a href="forgot.html">Change Your Password</a></p>
+        <p style="display: none; text-align: center;" id="noSave">You haven't saved any games.</p>
         <br>
         <br>
         <br>
-        <footer><p style="text-align: center;"><a href="https://game-jumper.freshdesk.com">Support</a> | <a href="Login/testerlogin.html">Tester</a> | <a href="Login/adminlogin.html">Admin</a></p></footer>
     </body>
     <style>
         .btn-outline-info {
