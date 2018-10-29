@@ -29,12 +29,14 @@ function checkUser(gameId) {
 }
 function miniGamesClick() {
     document.getElementById('noSave').style.display = "none";
+    document.getElementById('asteroids').style.display = "none";
+    document.getElementById('pong').style.display = "none";
     if(firebase.auth().currentUser != null) {
         document.getElementById('asteroids').style.display = "block";
-        document.getElementById('newAge').style.display = "block";
+        document.getElementById('pong').style.display = "block";
     }
     document.getElementById('snake').style.display = "block";
-    document.getElementById('pong').style.display = "block";
+    document.getElementById('newAge').style.display = "block";
     document.getElementById('helicopter').style.display = "none";
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
@@ -56,14 +58,16 @@ function fullGamesClick() {
     document.getElementById('change').style.display = "none";
 }
 function allGamesClick() {
+    document.getElementById('asteroids').style.display = "none";
+    document.getElementById('pong').style.display = "none";
     document.getElementById('noSave').style.display = "none";
     if(firebase.auth().currentUser != null) {
         document.getElementById('asteroids').style.display = "block";
-        document.getElementById('newAge').style.display = "block";
+        document.getElementById('pong').style.display = "block";
     }
     document.getElementById('helicopter').style.display = "block";
     document.getElementById('snake').style.display = "block";
-    document.getElementById('pong').style.display = "block";
+    document.getElementById('newAge').style.display = "block";
     document.getElementById('form').style.display = "none";
     document.getElementById('congrats').style.display = "none";
     document.getElementById('forgot').style.display = "none";
@@ -122,7 +126,7 @@ function recentGamesClick() {
         document.getElementById('change').style.display = "none";
         document.getElementById('noSave').style.display = "none";
         firebase.database().ref('users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
-            var data = snaphot.val();
+            var data = snapshot.val();
             if(data.saves != null) {
                 for(var i = 0; i < Object.keys(data.saves).length + 1; i++) {
                     if(data.saves[i] != null) {
@@ -160,6 +164,7 @@ function initApp() {
         } else {
             console.log("No User");
             if(document.getElementById('auth') != null) {
+                console.log("j");
                 location.replace('../../pricing.html');
             }
         }
@@ -194,7 +199,7 @@ function saveGame(gameId) {
             } else {
                 firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/saves').update({
                     1: gameId
-                }):
+                });
                 unsave = true;
                 document.getElementById('save').innerHTML = "Unsave Game";
             }

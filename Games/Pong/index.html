@@ -18,14 +18,16 @@
         <meta name="revisit-after" content="7">
         <meta name="author" content="Game Jumper">
         <link rel="icon" href="../../assets/favicon.ico">
+        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script src="../Phaser/phaser.min.js"></script>
         <script src="game.js"></script>
+        <script src="../../game.js"></script>
     </head>
-    <body onload="checkUser('pong');">
+    <body onload="checkUser('pong'); initApp();">
         <nav class="navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header">
+                <div class="navbar-header" id="auth">
                     <a class="navbar-brand" href="../../index.html">Game Jumper</a>
                 </div>
                 <ul class="nav navbar-nav">
