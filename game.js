@@ -61,10 +61,6 @@ function allGamesClick() {
     document.getElementById('asteroids').style.display = "none";
     document.getElementById('pong').style.display = "none";
     document.getElementById('noSave').style.display = "none";
-    if(firebase.auth().currentUser != null) {
-        document.getElementById('asteroids').style.display = "block";
-        document.getElementById('pong').style.display = "block";
-    }
     document.getElementById('helicopter').style.display = "block";
     document.getElementById('snake').style.display = "block";
     document.getElementById('newAge').style.display = "block";
@@ -73,6 +69,10 @@ function allGamesClick() {
     document.getElementById('forgot').style.display = "none";
     document.getElementById('verify').style.display = "none";
     document.getElementById('change').style.display = "none";
+    if(firebase.auth().currentUser != null) {
+        document.getElementById('pong').style.display = "block";
+        document.getElementById('asteroids').style.display = "block";
+    }
 }
 function logInClick() {
     document.getElementById('noSave').style.display = "none";
