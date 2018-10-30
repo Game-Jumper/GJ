@@ -119,6 +119,7 @@ function recentGamesClick() {
         document.getElementById('asteroids').style.display = "none";
         document.getElementById('snake').style.display = "none";
         document.getElementById('pong').style.display = "none";
+        document.getElementById('newAge').style.display = "none";
         document.getElementById('helicopter').style.display = "none";
         document.getElementById('congrats').style.display = "none";
         document.getElementById('forgot').style.display = "none";
@@ -160,6 +161,8 @@ function initApp() {
                 document.getElementById('real').style.display = "none";
                 document.getElementById('recent').innerHTML = "Saved Games";
                 document.getElementById('recent').style.cursor = "pointer";
+                document.getElementById('asteroids').style.display = "block";
+                document.getElementById('pong').style.display = "block";
             }
         } else {
             console.log("No User");
