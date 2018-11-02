@@ -17,14 +17,14 @@
         <meta name="language" content="English">
         <meta name="revisit-after" content="7">
         <meta name="author" content="Game Jumper">
+        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+        <script src="../../game.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <link rel="icon" href="../../assets/favicon.ico">
         <script src="../Phaser/phaser.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script src="main.js"></script>
-        <script src="../../game.js"></script>
     </head>
-    <body onload="checkUser('snake');">
+    <body>
         <nav class="navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -135,68 +135,4 @@
             cursor: pointer;
         }
     </style>
-    <script>
-        var config = {
-            apiKey: "AIzaSyCiPbUFz41fy0pet2Xeva_iB3G78DOhpuI",
-            authDomain: "game-jumper-customer.firebaseapp.com",
-            databaseURL: "https://game-jumper-customer.firebaseio.com",
-            projectId: "game-jumper-customer",
-            storageBucket: "game-jumper-customer.appspot.com",
-            messagingSenderId: "917916079945"
-        };
-        firebase.initializeApp(config);
-        var messagesRef = firebase.database().ref('rating');
-        var game = "Snake";
-        var rating;
-        var checker = Cookies.get('rate');
-        if(checker = false) {
-            document.getElementById('imgTwo').style.display = 'none';
-            document.querySelector('.img').style.display = 'none';
-            document.getElementById('paragraph').style.display = 'none';
-        } else {
-            document.getElementById('imgTwo').style.display = 'block';
-            document.querySelector('.img').style.display = 'block';
-            document.getElementById('paragraph').style.display = 'block';
-        }
-        function thumbsUp() {
-            rating = "Good";
-            Cookies.set('rate', true);
-            document.getElementById('alert').style.display = 'block';
-            document.getElementById('imgTwo').style.display = 'none';
-            document.querySelector('.img').style.display = 'none';
-            document.getElementById('paragraph').style.display = 'none';
-
-            // Hide alert after 3 seconds
-            setTimeout(function(){
-                document.querySelector('.alert').style.display = 'none';
-            },3000);
-
-            // Save message
-            saveMessage(game, rating);
-        }
-        function thumbsDown() {
-            rating = "Bad";
-            Cookies.set('rate', true);
-            document.getElementById('alert').style.display = 'block';
-            document.getElementById('imgTwo').style.display = 'none';
-            document.querySelector('.img').style.display = 'none';
-            document.getElementById('paragraph').style.display = 'none';
-
-            // Hide alert after 3 seconds
-            setTimeout(function(){
-                document.querySelector('.alert').style.display = 'none';
-            },3000);
-
-            // Save message
-            saveMessage(game, rating);
-        }
-        // Save message to firebase
-        function saveMessage(game, rating){
-            var newMessageRef = messagesRef.push();
-            newMessageRef.set({
-                game: game,
-                rating: rating
-            });
-        }
-    </script>
 </html>

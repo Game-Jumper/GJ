@@ -10,14 +10,19 @@ firebase.initializeApp(config);
 initApp();
 var cEmail;
 var cPassword;
-const unsave = false;
+var unsave = false;
+var show = false;
 function checkUser(gameId) {
+    console.log("user")
     if(firebase.auth().currentUser != null) {
         firebase.database().ref('users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
             var data = snapshot.val();
             if(data.saves != null) {
-                for(var i = 1; i < Object.Keys(data.saves).length + 1; i++) {
+                console.log("saves exist")
+                for(var i = 1; i < Object.keys(data.saves).length + 2; i++) {
+                    console.log(i)
                     if(data.saves[i] == gameId) {
+                        console.log("game exists")
                         unsave = true;
                         document.getElementById('save').innerHTML = "Unsave Game";
                         break;
@@ -102,6 +107,7 @@ function signMeIn() {
         if(firebase.auth().currentUser.emailVerified == false) {
             document.getElementById('verify').style.display = "block";
         }
+        show = true;
         initApp();
     }).catch(function(error) {
         var errorCode = error.code;
@@ -161,8 +167,11 @@ function initApp() {
                 document.getElementById('real').style.display = "none";
                 document.getElementById('recent').innerHTML = "Saved Games";
                 document.getElementById('recent').style.cursor = "pointer";
-                document.getElementById('asteroids').style.display = "block";
-                document.getElementById('pong').style.display = "block";
+                if(show == false) {
+                    document.getElementById('asteroids').style.display = "block";        
+                    document.getElementById('pong').style.display = "block";
+                }
+                show = true;
             }
         } else {
             console.log("No User");
@@ -178,8 +187,10 @@ function saveGame(gameId) {
         firebase.database().ref('users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
             var data = snapshot.val();
             if(data.saves != null) {
+                console.log("saves exist")
                 if(unsave == true) {
-                    for(var i = 1; i < Object.keys(data.saves).length + 1; i++) {
+                    console.log("unsaving")
+                    for(var i = 1; i < Object.keys(data.saves).length + 2; i++) {
                         if(data.saves[i] == gameId) {
                             firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/saves/' + i).remove();
                             unsave = false;
@@ -189,17 +200,23 @@ function saveGame(gameId) {
                         }
                     }
                 } else {
-                    for(var e = 1; e < Object.keys(data.saves).length + 1; e++){
-                        if(data.saves[i] == null) {
+                    console.log("saving")
+                    for(var e = 1; e < Object.keys(data.saves).length + 2; e++){
+                        if(data.saves[e] == null) {
+                            console.log("found open")
                             firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/saves').update({
                                 [e]: gameId
                             });
+                            break;
+                        } else {
+                            console.log("exists")
                         }
                     }
                     unsave = true;
                     document.getElementById('save').innerHTML = "Unsave Game";
                 }
             } else {
+                console.log("saves don't exist")
                 firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/saves').update({
                     1: gameId
                 });
@@ -214,7 +231,7 @@ function saveGame(gameId) {
 function finishRemove(startNum) {
     firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/saves').once('value').then(function(snapshot) {
         var data = snapshot.val();
-        for(var i = startNum + 1; i < Object.keys(data.saves).length + 2; i++) {
+        for(var i = startNum + 1; i < Object.keys(data.saves).length + 3; i++) {
             if(data.saves[i] != null) {
                 firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/saves').update({
                     [parseInt(i) - 1]: data.saves[i]
