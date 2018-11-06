@@ -12,6 +12,7 @@ var cEmail;
 var cPassword;
 var unsave = false;
 var show = false;
+var gameID;
 function checkUser(gameId) {
     console.log("user")
     if(firebase.auth().currentUser != null) {
@@ -172,6 +173,9 @@ function initApp() {
                     document.getElementById('pong').style.display = "block";
                 }
                 show = true;
+            }
+            if(gameID == "snake") {
+                console.log("h");
             }
         } else {
             console.log("No User");

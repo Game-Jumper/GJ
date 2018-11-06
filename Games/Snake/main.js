@@ -1,4 +1,4 @@
-window.onload = function() {
+//window.onload = function() {
 
     var head, tail, cursors, snake, apple, gameText, playerDirection;
     var directions = Object.freeze({up: 0, down: 1, right: 2, left: 3});
@@ -177,5 +177,4 @@ window.onload = function() {
             newHead(x, y);
         }
     }
-
-};
+//};
