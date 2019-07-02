@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game Jumper Tester</title>
+        <link rel="icon" href="../assets/favicon.ico">
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    </head>
+    <body>
+        <input type="text" placeholder="UID" id="uid">
+        <input type="text" placeholder="Current Money" id="money">
+        <input type="text" placeholder="Name" id="name">
+        <input type="text" placeholder="Next Patday" id="pay">
+        <input type="text" placeholder="Messages" id="mess">
+        <input type="submit" onclick="submit()">
+    </body>
+    <script>
+        var config = {
+            apiKey: "AIzaSyBsnqMW3L_2pjboOOzZJ8fJDYzGgCxcyoo",
+            authDomain: "game-jumper-tester.firebaseapp.com",
+            databaseURL: "https://game-jumper-tester.firebaseio.com",
+            projectId: "game-jumper-tester",
+            storageBucket: "game-jumper-tester.appspot.com",
+            messagingSenderId: "457793690679"
+        };
+        firebase.initializeApp(config);
+        function submit() {
+            firebase.database().ref('Users/' + document.getElementById('uid').value).update({
+                name: document.getElementById('name').value
+            });
+            firebase.database().ref('Users/' + document.getElementById('uid').value + '/tester').update({
+                currentMoney: document.getElementById('money').value,
+                nextPayday: document.getElementById('pay').value,
+                messagesFrom: document.getElementById('mess').value
+            });
+        }
+    </script>
+</html>
