@@ -10,10 +10,7 @@ firebase.initializeApp(config);
 function toggleSignIn() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-        setUser();
-        getJobs();
-    }).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode === 'auth/wrong-password') {

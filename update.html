@@ -6,12 +6,13 @@
         <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     </head>
     <body>
-        <input type="text" placeholder="UID" id="uid">
+        <!--<input type="text" placeholder="UID" id="uid">
         <input type="text" placeholder="Current Money" id="money">
         <input type="text" placeholder="Name" id="name">
         <input type="text" placeholder="Next Patday" id="pay">
-        <input type="text" placeholder="Messages" id="mess">
+        <input type="text" placeholder="Messages" id="mess">!-->
         <input type="submit" onclick="submit()">
+        <input type="text" id="uid">
     </body>
     <script>
         var config = {
@@ -24,13 +25,16 @@
         };
         firebase.initializeApp(config);
         function submit() {
-            firebase.database().ref('Users/' + document.getElementById('uid').value).update({
-                name: document.getElementById('name').value
-            });
-            firebase.database().ref('Users/' + document.getElementById('uid').value + '/tester').update({
-                currentMoney: document.getElementById('money').value,
-                nextPayday: document.getElementById('pay').value,
-                messagesFrom: document.getElementById('mess').value
+            firebase.database().ref('Users').once('value').then(function(snapshot) {
+                var data = snapshot.val();
+                for(var i = 0; i < 10; i++) {
+                    if(data.List[i] == null) {
+                        firebase.database().ref('Users/List').update({
+                            [i]: document.getElementById('uid').value
+                        });
+                        break;
+                    }
+                }
             });
         }
     </script>
