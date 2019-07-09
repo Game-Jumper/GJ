@@ -144,10 +144,12 @@ function changeJob(num) {
                 name: name,
                 link: link
             });
+            location.reload();
         } else if(input == "end") {
             firebase.database().ref('Jobs/' + num).update({
                 done: true
             });
+            location.reload();
         } else if(input == "delete") {
             for(var i = num; i < Object.keys(data.Jobs).length - 1; i++) {
                 console.log(i)
@@ -163,11 +165,11 @@ function changeJob(num) {
                     console.log("one run")
                 }
             }
+            location.reload();
         } else if(input == "open") {
             window.open(data.Jobs[num].link);
         } else {
             alert("Not a correct prompt.");
         }
-        location.reload();
     });
 }
