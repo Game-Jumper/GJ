@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tester Social</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+        <style>
+            html,
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5 {
+                font-family: "Open Sans", sans-serif
+            }
+            .extra:hover {
+                cursor: default;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+            }
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body class="w3-theme-l5">
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+                <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>To Tester Site</a>
+                <a href="#" class="w3-hide-small w3-right w3-padding-large extra" title="My Account">
+                    <img src="https://www.w3schools.com/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar" id="topRight">
+                </a>
+            </div>
+        </div>
+        <!-- Page Container -->
+        <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div id="signIn">
+                        <p style="text-align: center;">Please sign in.</p>
+                        <input type="email" class="w3-input w3-border" placeholder="Email" id="email">
+                        <input id="password" type="password" class="w3-input w3-border" placeholder="Password">
+                        <button class="w3-btn w3-blue" style="display: block; margin: 0 auto;" onclick="signIn();">Sign In</button>
+                    </div>
+                    <div id="profilePic" style="display: none;">
+                        <p style="text-align: center;">Please choose a profile picture. Don't worry. You can change this later.</p>
+                        <img src="Icons/1.png" onclick="change(1);">
+                        <img src="Icons/2.png" onclick="change(2);">
+                        <img src="Icons/3.png" onclick="change(3);">
+                        <img src="Icons/4.png" onclick="change(4);">
+                        <img src="Icons/5.png" onclick="change(5);">
+                        <img src="Icons/6.png" onclick="change(6);">
+                        <img src="Icons/7.png" onclick="change(7);">
+                        <img src="Icons/8.png" onclick="change(8);">
+                        <img src="Icons/9.png" onclick="change(9);">
+                        <img src="Icons/10.png" onclick="change(10);">
+                        <img src="Icons/11.png" onclick="change(11);">
+                        <div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div><div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/wichaiwi" title="Wichai.wi">Wichai.wi</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div><div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Grid -->
+            <div class="w3-row">
+                <!-- Left Column -->
+                <div class="w3-col m3">
+                    <!-- Profile -->
+                    <div class="w3-card w3-round w3-white">
+                        <div class="w3-container">
+                            <h4 class="w3-center">My Profile</h4>
+                            <p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                            <hr>
+                            <p><i class="fa fa-clipboard fa-fw w3-margin-right w3-text-theme"></i> Tester</p>
+                            <p><i class="fa fa-check-circle fa-fw w3-margin-right w3-text-theme"></i> 0 Completed Assignments</p>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Interests -->
+                    <div class="w3-card w3-round w3-white w3-hide-small">
+                        <div class="w3-container">
+                            <p><b>Balance</b></p>
+                            <p>$5.00</p>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <!-- Middle Column -->
+                <div class="w3-col m7" id="postContainer">
+                    <div class="w3-row-padding">
+                        <div class="w3-col m12">
+                            <div class="w3-card w3-round w3-white">
+                                <div class="w3-container w3-padding">
+                                    <h6 class="w3-opacity">Game Jumper Social</h6>
+                                    <p contenteditable="true" class="w3-border w3-padding" id="text"></p>
+                                    <input type="file">
+                                    <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil" onclick="post()"></i>  Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                        <img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                        <span class="w3-right w3-opacity">0 Likes</span>
+                        <h4>Jane Doe</h4><br>
+                        <hr class="w3-clear">
+                        <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+                    </div>
+                    <!-- End Middle Column -->
+                </div>
+                <!-- Right Column -->
+                <div class="w3-col m2">
+                </div>
+                <!-- End Grid -->
+            </div>
+            <!-- End Page Container -->
+        </div>
+        <br>
+        <!-- Footer -->
+        <footer class="w3-container w3-theme-d3 w3-padding-16">
+            <h5>Footer</h5>
+        </footer>
+        <footer class="w3-container w3-theme-d5">
+            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+        </footer>
+        <script src="index.js"></script>
+    </body>
+</html>
