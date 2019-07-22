@@ -9,9 +9,11 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 initApp();
+var fileName;
 function loadPosts() {
-    firebase.database().ref('Social/Posts').once('value').then(function(snapshot) {
-        var data = snapshot.val();
+    firebase.database().ref().once('value').then(function(snapshot) {
+        var data = snapshot.val().Social.Posts;
+        var users = snapshot.val().Users;
         for(var i = 0; i < Object.keys(data).length; i++) (function(i) {
             var postContain = document.createElement("div");
             postContain.classList.add("w3-container");
@@ -34,14 +36,17 @@ function loadPosts() {
             postLikes.innerHTML = data[i].likes + " Likes";
             postContain.appendChild(postLikes);
             var postName = document.createElement("h4");
-            postName.innerHTML = data[i].user;
+            postName.innerHTML = users[data[i].user].name;
             postContain.appendChild(postName);
             postContain.appendChild(document.createElement("br"));
             var hr = document.createElement("hr");
             hr.classList.add("w3-clear");
             postContain.appendChild(hr);
             var img = document.createElement("img");
-            img.src = data[i].src;
+            var starsRef = firebase.storage().ref().child('posts/' + data[i].src);
+            starsRef.getDownloadURL().then(function(url) {
+                img.src = url;
+            });
             img.classList.add("w3-margin-bottom");
             img.style.width = "100%";
             postContain.appendChild(img);
@@ -60,6 +65,7 @@ function loadPosts() {
             postButton.appendChild(postThumb);
             postButton.appendChild(document.createTextNode(" Like"));
             postContain.appendChild(postButton);
+            fillPics();
         })(i);
     });
 }
@@ -78,10 +84,16 @@ function post() {
     firebase.database().ref().once('value').then(function(snapshot) {
         var data = snapshot.val();
         if(document.getElementById('file').value != null) {
-            console.log("hi")
+            firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
+                user: firebase.auth().currentUser,
+                prosrc: data.Users[firebase.auth().currentUser].prosrc,
+                likes: 0,
+                text: document.getElementById('text').value,
+                src: fileName
+            });
         } else {
             firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
-                user: data.Users[firebase.auth().currentUser].name,
+                user: firebase.auth().currentUser,
                 prosrc: data.Users[firebase.auth().currentUser].prosrc,
                 likes: 0,
                 text: document.getElementById('text').value
@@ -97,6 +109,8 @@ function signIn() {
             var data = snapshot.val();
             if(data.Users[firebase.auth().currentUser.uid].prosrc == null) {
                 document.getElementById("profilePic").style.display = "block";
+            } else {
+                document.getElementById("myModal").style.display = "none";
             }
         });
     }).catch(function(error) {
@@ -113,8 +127,6 @@ function initApp() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             loadPosts();
-        } else {
-            location.replace("https://gamejumper.info/Login/testerlogin.html");
         }
     });
     setTimeout(function(){
@@ -128,8 +140,30 @@ function change(srcNum) {
         prosrc: srcNum
     });
     document.getElementById('myModal').style.display = "none";
-    firebase.database().ref('Users/' + firebase.auth().currentUser.uid).once('value').then(function() {
+}
+function fillPics() {
+    firebase.database().ref('Users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
         var data = snapshot.val();
-        document.getElementById('topRight').src = "Icons/" + data[i].prosrc + ".png";
+        document.getElementById('topRight').src = "Icons/" + data.prosrc + ".png";
+        document.getElementById('myAccount').src = "Icons/" + data.prosrc + ".png";
+        if(data.prosrc == 7 || data.prosrc == 1 || data.prosrc == 2) {
+            document.getElementById('topRight').style.backgroundColor = "black";
+            document.getElementById('myAccount').style.backgroundColor = "black";
+        } else {
+            document.getElementById('topRight').style.backgroundColor = "white";
+            document.getElementById('myAccount').style.backgroundColor = "white";
+        }
+        var assignments = document.createTextNode(" " + data.tester.completed + " Assignments Completed")
+        document.getElementById('assign').appendChild(assignments);
+        document.getElementById('balance').innerHTML = data.tester.currentMoney;
     });
 }
+var fileButton = document.getElementById('file');
+fileButton.addEventListener('change', function(e){
+    var file = e.target.files[0];
+    var storageRef = firebase.storage().ref('posts/' + file.name);
+    storageRef.put(file).then(function(snapshot) {
+        var file = fileButton.files[0];  
+        fileName = file.name;
+    });
+});

@@ -102,10 +102,10 @@
                     <div class="w3-card w3-round w3-white">
                         <div class="w3-container">
                             <h4 class="w3-center">My Profile</h4>
-                            <p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                            <p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px; border: 0.1px solid black;" alt="Avatar" id="myAccount"></p>
                             <hr>
                             <p><i class="fa fa-clipboard fa-fw w3-margin-right w3-text-theme"></i> Tester</p>
-                            <p><i class="fa fa-check-circle fa-fw w3-margin-right w3-text-theme"></i> 0 Completed Assignments</p>
+                            <p id="assign"><i class="fa fa-check-circle fa-fw w3-margin-right w3-text-theme"></i></p>
                         </div>
                     </div>
                     <br>
@@ -113,7 +113,7 @@
                     <div class="w3-card w3-round w3-white w3-hide-small">
                         <div class="w3-container">
                             <p><b>Balance</b></p>
-                            <p>$5.00</p>
+                            <p id="balance">$5.00</p>
                         </div>
                     </div>
                     <br>
@@ -126,7 +126,7 @@
                                 <div class="w3-container w3-padding">
                                     <h6 class="w3-opacity">Game Jumper Social</h6>
                                     <p contenteditable="true" class="w3-border w3-padding" id="text"></p>
-                                    <input type="file">
+                                    <input type="file" style="margin-right: -80px;" id="file">
                                     <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil" onclick="post()"></i>  Post</button>
                                 </div>
                             </div>
