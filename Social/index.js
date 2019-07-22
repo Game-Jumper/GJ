@@ -14,7 +14,7 @@ function loadPosts() {
     firebase.database().ref().once('value').then(function(snapshot) {
         var data = snapshot.val().Social.Posts;
         var users = snapshot.val().Users;
-        for(var i = 0; i < Object.keys(data).length; i++) (function(i) {
+        for(var i = Object.keys(data).length - 1; i > -1; i--) (function(i) {
             var postContain = document.createElement("div");
             postContain.classList.add("w3-container");
             postContain.classList.add("w3-card");
@@ -42,14 +42,16 @@ function loadPosts() {
             var hr = document.createElement("hr");
             hr.classList.add("w3-clear");
             postContain.appendChild(hr);
-            var img = document.createElement("img");
-            var starsRef = firebase.storage().ref().child('posts/' + data[i].src);
-            starsRef.getDownloadURL().then(function(url) {
-                img.src = url;
-            });
-            img.classList.add("w3-margin-bottom");
-            img.style.width = "100%";
-            postContain.appendChild(img);
+            if(data[i].src != null) {
+                var img = document.createElement("img");
+                //var starsRef = firebase.storage().ref().child('posts/' + data[i].src);
+                firebase.storage().ref().child('posts/' + data[i].src).getDownloadURL().then(function(url) {
+                    img.src = url;
+                });
+                img.classList.add("w3-margin-bottom");
+                img.style.width = "100%";
+                postContain.appendChild(img);
+            }
             var postContent = document.createElement("p");
             postContent.innerHTML = data[i].text;
             postContain.appendChild(postContent);
@@ -83,21 +85,23 @@ function likePost(num) {
 function post() {
     firebase.database().ref().once('value').then(function(snapshot) {
         var data = snapshot.val();
-        if(document.getElementById('file').value != null) {
+        if(document.getElementById("file").files.length == 0) {
             firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
-                user: firebase.auth().currentUser,
-                prosrc: data.Users[firebase.auth().currentUser].prosrc,
+                user: firebase.auth().currentUser.uid,
+                prosrc: data.Users[firebase.auth().currentUser.uid].prosrc,
                 likes: 0,
-                text: document.getElementById('text').value,
-                src: fileName
+                text: document.getElementById('text').innerHTML
             });
+            location.reload();
         } else {
             firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
-                user: firebase.auth().currentUser,
-                prosrc: data.Users[firebase.auth().currentUser].prosrc,
+                user: firebase.auth().currentUser.uid,
+                prosrc: data.Users[firebase.auth().currentUser.uid].prosrc,
                 likes: 0,
-                text: document.getElementById('text').value
+                text: document.getElementById('text').innerHTML,
+                src: fileName
             });
+            location.reload();
         }
     });
 }
@@ -163,7 +167,7 @@ fileButton.addEventListener('change', function(e){
     var file = e.target.files[0];
     var storageRef = firebase.storage().ref('posts/' + file.name);
     storageRef.put(file).then(function(snapshot) {
-        var file = fileButton.files[0];  
+        var file = fileButton.files[0];
         fileName = file.name;
     });
 });
