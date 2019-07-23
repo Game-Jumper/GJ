@@ -156,7 +156,7 @@
             <h5>Game Jumper Tester Social Network</h5>
         </footer>
         <footer class="w3-container w3-theme-d5">
-            <p><a href="#" onclick="signOut();" target="_blank">sign out</a></p>
+            <p><a href="#" onclick="firebase.auth().signOut(); location.reload();" target="_blank">sign out</a></p>
         </footer>
         <script src="index.js"></script>
     </body>
