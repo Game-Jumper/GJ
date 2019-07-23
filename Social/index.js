@@ -18,8 +18,7 @@ function scan() {
         if(canReset == false) {
             canReset = true;
         } else {
-            document.getElementsByClassName("auto-update").remove();
-            canReset = false;
+            location.reload();
         }
     });
 }
