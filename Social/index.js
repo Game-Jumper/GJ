@@ -278,3 +278,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
     console.log("start")
     loadPosts();
 }
+function signOut() {
+    firebase.auth().signOut();
+    location.reload();
+}
