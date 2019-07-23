@@ -24,7 +24,7 @@ function loadPosts() {
             document.getElementById('postContainer').appendChild(postContain);
             postContain.appendChild(document.createElement("br"));
             var postProImg = document.createElement("img");
-            postProImg.src = "Icons/" + data[i].prosrc + ".png";
+            postProImg.src = "Icons/" + users[data[i].user].prosrc + ".png";
             postProImg.classList.add("w3-left");
             postProImg.classList.add("w3-circle");
             postProImg.classList.add("w3-margin-right");
@@ -33,10 +33,16 @@ function loadPosts() {
             var postLikes = document.createElement("span");
             postLikes.classList.add("w3-right");
             postLikes.classList.add("w3-opacity");
-            postLikes.innerHTML = data[i].likes + " Likes";
+            postLikes.innerHTML = data[i].likesCount + " Likes";
             postContain.appendChild(postLikes);
             var postName = document.createElement("h4");
             postName.innerHTML = users[data[i].user].name;
+            postName.onmouseover = function() {
+                this.style.cursor = "pointer";
+            }
+            postName.onclick = function() {
+                showProfile(data[i].user);
+            }
             postContain.appendChild(postName);
             postContain.appendChild(document.createElement("br"));
             var hr = document.createElement("hr");
@@ -44,7 +50,6 @@ function loadPosts() {
             postContain.appendChild(hr);
             if(data[i].src != null) {
                 var img = document.createElement("img");
-                //var starsRef = firebase.storage().ref().child('posts/' + data[i].src);
                 firebase.storage().ref().child('posts/' + data[i].src).getDownloadURL().then(function(url) {
                     img.src = url;
                 });
@@ -67,19 +72,36 @@ function loadPosts() {
             postButton.appendChild(postThumb);
             postButton.appendChild(document.createTextNode(" Like"));
             postContain.appendChild(postButton);
-            fillPics();
         })(i);
+        fillPics();
     });
 }
 function likePost(num) {
-    console.log(num);
     firebase.database().ref('Social/Posts/' + num).once('value').then(function(snapshot) {
         var data = snapshot.val();
-        console.log(data);
-        firebase.database().ref('Social/Posts/' + num.toString()).update({
-            likes: data.likes += 1
-        });
-        location.reload();
+        if(data.likes != null) {
+            for(var i = 0; i < Object.keys(data.likes).length; i++) {
+                if(data.likes[i] == firebase.auth().currentUser.uid) {
+                    alert("You have already liked this post");
+                } else {
+                    firebase.database().ref('Social/Posts/' + num).update({
+                        [Object.keys(data.likes).length]: firebase.auth().currentUser.uid
+                    });
+                    firebase.database().ref('Social/Posts/' + num).update({
+                        likesCount: data.likesCount += 1
+                    });
+                    location.reload();
+                }
+            }
+        } else {
+            firebase.database().ref('Social/Posts/' + num + '/likes').update({
+                0: firebase.auth().currentUser.uid
+            });
+            firebase.database().ref('Social/Posts/' + num).update({
+                likesCount: 1
+            });
+            location.reload();
+        }
     });
 }
 function post() {
@@ -88,16 +110,14 @@ function post() {
         if(document.getElementById("file").files.length == 0) {
             firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
                 user: firebase.auth().currentUser.uid,
-                prosrc: data.Users[firebase.auth().currentUser.uid].prosrc,
-                likes: 0,
+                likesCount: 0,
                 text: document.getElementById('text').innerHTML
             });
             location.reload();
         } else {
             firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
                 user: firebase.auth().currentUser.uid,
-                prosrc: data.Users[firebase.auth().currentUser.uid].prosrc,
-                likes: 0,
+                likesCount: 0,
                 text: document.getElementById('text').innerHTML,
                 src: fileName
             });
@@ -113,6 +133,7 @@ function signIn() {
             var data = snapshot.val();
             if(data.Users[firebase.auth().currentUser.uid].prosrc == null) {
                 document.getElementById("profilePic").style.display = "block";
+                document.getElementById('signIn').style.display = "none";
             } else {
                 document.getElementById("myModal").style.display = "none";
             }
@@ -144,6 +165,7 @@ function change(srcNum) {
         prosrc: srcNum
     });
     document.getElementById('myModal').style.display = "none";
+    location.reload();
 }
 function fillPics() {
     firebase.database().ref('Users/' + firebase.auth().currentUser.uid).once('value').then(function(snapshot) {
@@ -157,7 +179,7 @@ function fillPics() {
             document.getElementById('topRight').style.backgroundColor = "white";
             document.getElementById('myAccount').style.backgroundColor = "white";
         }
-        var assignments = document.createTextNode(" " + data.tester.completed + " Assignments Completed")
+        var assignments = document.createTextNode(" " + data.tester.completed + " Assignments Completed");
         document.getElementById('assign').appendChild(assignments);
         document.getElementById('balance').innerHTML = data.tester.currentMoney;
     });
@@ -171,3 +193,49 @@ fileButton.addEventListener('change', function(e){
         fileName = file.name;
     });
 });
+function openPics() {
+    document.getElementById('myModal').style.display = "block";
+    document.getElementById('signIn').style.display = "none";
+    document.getElementById('profilePic').style.display = "block";
+}
+function showProfile(uid) {
+    firebase.database().ref().once('value').then(function(snapshot) {
+        var data = snapshot.val();
+        document.getElementById('profilePix').style.display = "none";
+        document.getElementById('clipboard').style.display = "block";
+        if(data.Users[uid].admin == true) {
+            document.getElementById('clipboard').appendChild(document.createTextNode(' Admin'));
+        } else {
+            document.getElementById('clipboard').appendChild(document.createTextNode(' Tester'));
+        }
+        document.getElementById('assign').style.display = "none";
+        var pHolder = document.createElement("p");
+        pHolder.id = "pHolder";
+        var innerI = document.createElement("i");
+        innerI.classList.add("fa");
+        innerI.classList.add("fa-check-circle");
+        innerI.classList.add("fa-fw");
+        innerI.classList.add("w3-margin-right");
+        innerI.classList.add("w3-text-theme");
+        pHolder.appendChild(innerI);
+        var assignText = document.createTextNode(" " + data.Users[uid].tester.completed + " Assignments Completed");
+        pHolder.appendChild(assignText);
+        document.getElementById('profileContainer').appendChild(pHolder);
+        document.getElementById('proName').innerHTML = data.Users[uid].name;
+        document.getElementById('myAccount').src = "Icons/" + data.Users[uid].prosrc + ".png";
+        document.getElementById('balance').innerHTML = data.Users[uid].tester.currentMoney;
+    });
+}
+function fillMyAccount() {
+    firebase.database().ref().once('value').then(function(snapshot) {
+        var uid = firebase.auth().currentUser.uid;
+        var data = snapshot.val();
+        document.getElementById('profilePix').style.display = "block";
+        document.getElementById('clipboard').style.display = "none";
+        document.getElementById('assign').style.display = "block";
+        document.getElementById('profileContainer').removeChild(document.getElementById('pHolder'));
+        document.getElementById('proName').innerHTML = "My Profile";
+        document.getElementById('myAccount').src = "Icons/" + data.Users[uid].prosrc + ".png";
+        document.getElementById('balance').innerHTML = data.Users[uid].tester.currentMoney;
+    });
+}

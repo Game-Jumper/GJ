@@ -19,9 +19,6 @@
             h5 {
                 font-family: "Open Sans", sans-serif
             }
-            .extra:hover {
-                cursor: default;
-            }
             .modal {
                 display: none;
                 position: fixed;
@@ -54,15 +51,17 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+            #changePic:hover {
+                cursor: pointer;
+            }
         </style>
     </head>
     <body class="w3-theme-l5">
         <!-- Navbar -->
         <div class="w3-top">
             <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
                 <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>To Tester Site</a>
-                <a href="#" class="w3-hide-small w3-right w3-padding-large extra" title="My Account">
+                <a href="#" class="w3-right w3-padding-large extra" title="My Account" onclick="fillMyAccount();">
                     <img src="https://www.w3schools.com/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar" id="topRight">
                 </a>
             </div>
@@ -90,7 +89,7 @@
                         <img src="Icons/9.png" onclick="change(9);">
                         <img src="Icons/10.png" onclick="change(10);">
                         <img src="Icons/11.png" onclick="change(11);">
-                        <div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div><div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/wichaiwi" title="Wichai.wi">Wichai.wi</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div><div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                        <div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div><div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/wichaiwi" title="Wichai.wi">Wichai.wi</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div><div style="text-align: center;">Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> messages.attribution.is_licensed_by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
                     </div>
                 </div>
             </div>
@@ -100,17 +99,18 @@
                 <div class="w3-col m3">
                     <!-- Profile -->
                     <div class="w3-card w3-round w3-white">
-                        <div class="w3-container">
-                            <h4 class="w3-center">My Profile</h4>
+                        <div class="w3-container" id="profileContainer">
+                            <h4 class="w3-center" id="proName">My Profile</h4>
                             <p class="w3-center"><img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px; border: 0.1px solid black;" alt="Avatar" id="myAccount"></p>
                             <hr>
-                            <p><i class="fa fa-clipboard fa-fw w3-margin-right w3-text-theme"></i> Tester</p>
+                            <p style="display: none;" id="clipboard"><i class="fa fa-clipboard fa-fw w3-margin-right w3-text-theme"></i></p>
                             <p id="assign"><i class="fa fa-check-circle fa-fw w3-margin-right w3-text-theme"></i></p>
+                            <p id="profilePix"><i class="fa fa-image fa-fw w3-margin-right w3-text-theme"></i> <a onclick="openPics();" style="text-decoration: none;" id="changePic">Change Profile Picture</a></p>
                         </div>
                     </div>
                     <br>
                     <!-- Interests -->
-                    <div class="w3-card w3-round w3-white w3-hide-small">
+                    <div class="w3-card w3-round w3-white">
                         <div class="w3-container">
                             <p><b>Balance</b></p>
                             <p id="balance">$5.00</p>
@@ -153,7 +153,7 @@
         <br>
         <!-- Footer -->
         <footer class="w3-container w3-theme-d3 w3-padding-16">
-            <h5>Footer</h5>
+            <h5>Game Jumper Tester Social Network</h5>
         </footer>
         <footer class="w3-container w3-theme-d5">
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
