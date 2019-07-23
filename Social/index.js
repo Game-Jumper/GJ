@@ -97,7 +97,7 @@ function likePost(num) {
         for(var i = 0; i < Object.keys(data.likes).length - 1; i++) {
             if(data.likes[i] == firebase.auth().currentUser.uid) {
                 alert("You have already liked this post");
-            } else if(i == Object.keys(data.likes).length - 1) {
+            } else if(i == Object.keys(data.likes).length - 2) {
                 firebase.database().ref('Social/Posts/' + num).update({
                     [Object.keys(data.likes).length - 1]: firebase.auth().currentUser.uid
                 });
