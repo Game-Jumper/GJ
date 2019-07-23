@@ -10,7 +10,21 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 initApp();
 var fileName;
+var canReset = false;
+function scan() {
+    firebase.database().ref('Social/Posts').on('value', function(snapshot) {
+        console.log("begin")
+        var posts = document.getElementsByClassName('auto-update');
+        if(canReset == false) {
+            canReset = true;
+        } else {
+            document.getElementsByClassName("auto-update").remove();
+            canReset = false;
+        }
+    });
+}
 function loadPosts() {
+    console.log("ran")
     firebase.database().ref().once('value').then(function(snapshot) {
         var data = snapshot.val().Social.Posts;
         var users = snapshot.val().Users;
@@ -20,7 +34,8 @@ function loadPosts() {
             postContain.classList.add("w3-card");
             postContain.classList.add("w3-white");
             postContain.classList.add("w3-round");
-            postContain.classList.add("w3-margin")
+            postContain.classList.add("w3-margin");
+            postContain.classList.add("auto-update");
             document.getElementById('postContainer').appendChild(postContain);
             postContain.appendChild(document.createElement("br"));
             var postProImg = document.createElement("img");
@@ -73,7 +88,7 @@ function loadPosts() {
             postButton.appendChild(document.createTextNode(" Like"));
             postContain.appendChild(postButton);
         })(i);
-        fillPics();
+        scan();
     });
 }
 function likePost(num) {
@@ -152,6 +167,7 @@ function initApp() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             loadPosts();
+            fillPics();
         }
     });
     setTimeout(function(){
@@ -238,4 +254,13 @@ function fillMyAccount() {
         document.getElementById('myAccount').src = "Icons/" + data.Users[uid].prosrc + ".png";
         document.getElementById('balance').innerHTML = data.Users[uid].tester.currentMoney;
     });
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+    console.log("start")
+    loadPosts();
 }
