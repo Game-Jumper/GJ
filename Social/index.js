@@ -94,49 +94,63 @@ function loadPosts() {
 function likePost(num) {
     firebase.database().ref('Social/Posts/' + num).once('value').then(function(snapshot) {
         var data = snapshot.val();
-        if(data.likes != null) {
-            for(var i = 0; i < Object.keys(data.likes).length; i++) {
-                if(data.likes[i] == firebase.auth().currentUser.uid) {
-                    alert("You have already liked this post");
-                } else {
-                    firebase.database().ref('Social/Posts/' + num).update({
-                        [Object.keys(data.likes).length]: firebase.auth().currentUser.uid
-                    });
-                    firebase.database().ref('Social/Posts/' + num).update({
-                        likesCount: data.likesCount += 1
-                    });
-                    location.reload();
-                }
+        for(var i = 0; i < Object.keys(data.likes).length - 1; i++) {
+            if(data.likes[i] == firebase.auth().currentUser.uid) {
+                alert("You have already liked this post");
+            } else if(i == Object.keys(data.likes).length - 1) {
+                firebase.database().ref('Social/Posts/' + num).update({
+                    [Object.keys(data.likes).length - 1]: firebase.auth().currentUser.uid
+                });
+                firebase.database().ref('Social/Posts/' + num).update({
+                    likesCount: data.likesCount += 1
+                });
             }
-        } else {
-            firebase.database().ref('Social/Posts/' + num + '/likes').update({
-                0: firebase.auth().currentUser.uid
-            });
-            firebase.database().ref('Social/Posts/' + num).update({
-                likesCount: 1
-            });
-            location.reload();
         }
     });
 }
 function post() {
     firebase.database().ref().once('value').then(function(snapshot) {
         var data = snapshot.val();
+        for(var i = 0; i < 16; i++) {
+            if(data.Social.Posts[i + 1].src == null) {
+                firebase.database().ref('Social/Posts/' + i).set({
+                    user: data.Social.Posts[i + 1].user,
+                    likesCount: data.Social.Posts[i + 1].likesCount,
+                    text: data.Social.Posts[i + 1].text,
+                    likes: data.Social.Posts[i + 1].likes
+                });
+                console.log(data.Social.Posts[i + 1].likes)
+            } else {
+                firebase.database.ref('Social/Posts/' + i).update({
+                    user: data.Social.Posts[i + 1].user,
+                    likesCount: data.Social.Posts[i + 1].likesCount,
+                    text: data.Social.Posts[i + 1].text,
+                    likes: data.Social.Posts[i + 1].likes,
+                    src: data.Social.Posts[i + 1].src
+                });
+            }
+        }
         if(document.getElementById("file").files.length == 0) {
-            firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
+            firebase.database().ref('Social/Posts/16').update({
                 user: firebase.auth().currentUser.uid,
                 likesCount: 0,
                 text: document.getElementById('text').innerHTML
             });
-            location.reload();
+            firebase.database().ref('Social/Posts/16/likes').update({
+                placeholder: true
+            });
+            document.getElementById('text').innerHTML = "";
         } else {
-            firebase.database().ref('Social/Posts/' + Object.keys(data.Social.Posts).length).update({
+            firebase.database().ref('Social/Posts/16').update({
                 user: firebase.auth().currentUser.uid,
                 likesCount: 0,
                 text: document.getElementById('text').innerHTML,
                 src: fileName
             });
-            location.reload();
+            firebase.database().ref('Social/Posts/16/likes').update({
+                placeholder: true
+            });
+            document.getElementById('text').innerHTML = "";
         }
     });
 }
