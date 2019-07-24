@@ -86,19 +86,22 @@ function loadPosts() {
     });
 }
 function likePost(num) {
+    var canChange = true;
     firebase.database().ref('Social/Posts/' + num).once('value').then(function(snapshot) {
         var data = snapshot.val();
         for(var i = 0; i < Object.keys(data.likes).length - 1; i++) {
             if(data.likes[i] == firebase.auth().currentUser.uid) {
                 alert("You have already liked this post");
-            } else if(i == Object.keys(data.likes).length - 2) {
-                firebase.database().ref('Social/Posts/' + num).update({
-                    [Object.keys(data.likes).length - 1]: firebase.auth().currentUser.uid
-                });
-                firebase.database().ref('Social/Posts/' + num).update({
-                    likesCount: data.likesCount += 1
-                });
+                canChange = false
             }
+        }
+        if(canChange == true) {
+            firebase.database().ref('Social/Posts/' + num + '/likes').update({
+                [Object.keys(data.likes).length - 1]: firebase.auth().currentUser.uid
+            });
+            firebase.database().ref('Social/Posts/' + num).update({
+                likesCount: data.likesCount += 1
+            });
         }
     });
 }
