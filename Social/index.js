@@ -11,25 +11,11 @@ firebase.initializeApp(firebaseConfig);
 initApp();
 var fileName;
 var canReset = true;
-var checkAt;
 function scan() {
-    firebase.database().ref('Social/Posts').on('value', function(snapshot) {
+    firebase.database().ref('Social/Posts').on('child_changed', function(snapshot) {
         var data = snapshot.val();
-        var newArray = [data[12].text, data[12].user, data[12].likesCount];
-        console.log(newArray);
-        console.log(checkAt);
-        if(checkArrays(checkAt, newArray) == true) {
-            console.log("t")
-        } else {
-            document.getElementsByClassName('auto-upload').remove();
-        }
+        document.getElementsByClassName('auto-update').remove();
     });
-}
-function checkArrays(a, b) {
-    for (var i = 0; i < a.length; ++i) {
-        if (a[i] !== b[i]) return false;
-    }
-    return true;
 }
 function loadPosts() {
     console.log("ran")
@@ -95,9 +81,6 @@ function loadPosts() {
             postButton.appendChild(postThumb);
             postButton.appendChild(document.createTextNode(" Like"));
             postContain.appendChild(postButton);
-            if(i == 12 && canReset == true) {
-                checkAt = [data[i].text, data[i].user, data[i].likesCount];
-            }
         })(i);
         scan();
     });
