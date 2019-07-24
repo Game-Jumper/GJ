@@ -10,17 +10,26 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 initApp();
 var fileName;
-var canReset = false;
+var canReset = true;
+var checkAt;
 function scan() {
     firebase.database().ref('Social/Posts').on('value', function(snapshot) {
-        console.log("begin")
-        var posts = document.getElementsByClassName('auto-update');
-        if(canReset == false) {
-            canReset = true;
+        var data = snapshot.val();
+        var newArray = [data[12].text, data[12].user, data[12].likesCount];
+        console.log(newArray);
+        console.log(checkAt);
+        if(checkArrays(checkAt, newArray) == true) {
+            console.log("t")
         } else {
-            location.reload();
+            document.getElementsByClassName('auto-upload').remove();
         }
     });
+}
+function checkArrays(a, b) {
+    for (var i = 0; i < a.length; ++i) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
 }
 function loadPosts() {
     console.log("ran")
@@ -86,6 +95,9 @@ function loadPosts() {
             postButton.appendChild(postThumb);
             postButton.appendChild(document.createTextNode(" Like"));
             postContain.appendChild(postButton);
+            if(i == 12 && canReset == true) {
+                checkAt = [data[i].text, data[i].user, data[i].likesCount];
+            }
         })(i);
         scan();
     });
@@ -120,7 +132,7 @@ function post() {
                 });
                 console.log(data.Social.Posts[i + 1].likes)
             } else {
-                firebase.database.ref('Social/Posts/' + i).update({
+                firebase.database().ref('Social/Posts/' + i).update({
                     user: data.Social.Posts[i + 1].user,
                     likesCount: data.Social.Posts[i + 1].likesCount,
                     text: data.Social.Posts[i + 1].text,
@@ -130,7 +142,7 @@ function post() {
             }
         }
         if(document.getElementById("file").files.length == 0) {
-            firebase.database().ref('Social/Posts/16').update({
+            firebase.database().ref('Social/Posts/16').set({
                 user: firebase.auth().currentUser.uid,
                 likesCount: 0,
                 text: document.getElementById('text').innerHTML
@@ -274,6 +286,5 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
             this[i].parentElement.removeChild(this[i]);
         }
     }
-    console.log("start")
     loadPosts();
 }
