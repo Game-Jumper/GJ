@@ -14,7 +14,8 @@ var canReset = true;
 function scan() {
     firebase.database().ref('Social/Posts').on('child_changed', function(snapshot) {
         var data = snapshot.val();
-        document.getElementsByClassName('auto-update').remove();
+        //document.getElementsByClassName('auto-update').remove();
+        location.reload();
     });
 }
 function loadPosts() {
